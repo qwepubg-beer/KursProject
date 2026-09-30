@@ -104,6 +104,9 @@
     <Compile Include="NutritionTargets.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgramDays.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
     <Compile Include="UsersActivity.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="res\dictionaries\Dictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,7 +204,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\" />
     <Folder Include="res\Icons\" />
     <Folder Include="windows\" />
   </ItemGroup>

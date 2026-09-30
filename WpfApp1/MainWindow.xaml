@@ -21,5 +21,8 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Frame Name="MainFrame" Grid.RowSpan="7" Grid.Column="1" NavigationUIVisibility="Hidden">  </Frame>
+        <Button Name="Back" Click="Back_Click" > </Button>
+        <Button Name="Exit" Grid.Row="7" Click="Exit_Click" ></Button>
     </Grid>
 </Window>
