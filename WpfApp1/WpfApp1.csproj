@@ -86,6 +86,7 @@
     <Compile Include="Foods.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="res\Functions\Function.cs" />
     <Compile Include="Goals.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -116,7 +117,7 @@
     <Compile Include="ProgressMeasurements.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="res\Core.cs" />
+    <Compile Include="res\Functions\Core.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

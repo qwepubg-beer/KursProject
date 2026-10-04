@@ -29,11 +29,6 @@ namespace WpfApp1
         {
 
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
