@@ -86,6 +86,9 @@
     <Compile Include="Foods.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="res\Functions\Function.cs" />
     <Compile Include="Goals.cs">
       <DependentUpon>DB.tt</DependentUpon>
@@ -140,6 +143,10 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Page Include="Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
