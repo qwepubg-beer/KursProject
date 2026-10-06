@@ -8,6 +8,6 @@ namespace WpfApp1.res
 {
     internal class Core
     {
-        KursEntities kursEntities =new KursEntities();
+        public static KursEntities kursEntities =new KursEntities();
     }
 }
