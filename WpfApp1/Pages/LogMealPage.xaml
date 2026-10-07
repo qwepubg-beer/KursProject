@@ -47,10 +47,10 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name="TypeProductComboBox" Grid.Column="3" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" SelectionChanged="GenreComboBox_SelectionChanged" Margin="5"></ComboBox>
-        <ComboBox x:Name="SortComboBox" Grid.Column="2" IsEditable="True" SelectionChanged="TypeComboBox_SelectionChanged" Margin="5">
-            <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
-            <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>
+        <ComboBox x:Name="TypeProductComboBox" Grid.Column="3" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5"></ComboBox>
+        <ComboBox x:Name="SortComboBox" Grid.Column="2" IsEditable="True" Margin="5">
+            <ComboBoxItem Content="По калориям возрастание"></ComboBoxItem>
+            <ComboBoxItem Content="По калориям убывание"></ComboBoxItem>
             <ComboBoxItem Content="По имени"></ComboBoxItem>
         </ComboBox>
         <Grid Grid.Column="1">

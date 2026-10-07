@@ -28,6 +28,7 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
             LoadData();
+            TypeProductComboBox.ItemsSource = Core.kursEntities.FoodCategories.ToList();
         }
         void LoadData()
         {
@@ -59,6 +60,32 @@ namespace WpfApp1.Pages
         private void RecordBtn_Click(object sender, RoutedEventArgs e)
         {
             //записать в таблицу
+        }
+        private void TypeProductComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TypeProductComboBox.SelectedItem != null)
+            {
+                FoodCategories g = TypeProductComboBox.SelectedItem as FoodCategories;
+                ProductList.ItemsSource = FoodList.Where(b => b.CategoryId == g.CategoryId).ToList();
+            }
+        }
+
+        private void SortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (SortComboBox.SelectedIndex)
+            {
+                case 0:
+                    ProductList.ItemsSource = FoodList.OrderBy(b => b.Calories).ToList();
+                    break;
+                case 1:
+                    ProductList.ItemsSource = FoodList.OrderByDescending(b => b.Calories).ToList();
+                    break;
+                case 2:
+                    ProductList.ItemsSource = FoodList.OrderBy(b => b.Name).ToList();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
