@@ -32,12 +32,14 @@
         <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Grid.Row="1" Grid.Column="1" Grid.RowSpan="6">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center">
-                        <Image Height="120" Width="90"  Source="{Binding Cover}" Margin="0"/>
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
-                            <Button Name="ChooseFoodBtn" Height="40" Content="Информация" Click="ChooseFoodBtn_Click"></Button>
-                        </StackPanel>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Calories, StringFormat=Калории: {0}}"/>
+                        <TextBlock Text="{Binding ProteinG, StringFormat=Б:{0}}"/>
+                        <TextBlock Text="{Binding FatG, StringFormat=Ж:{0}}"/>
+                        <TextBlock Text="{Binding CarbsG, StringFormat=У:{0}}"/>
+                        <TextBlock Text="{Binding FiberG, StringFormat=Клечатка:{0}}"/>
+                        <Button Name="ChooseFoodBtn" Height="25" Content="Выбрать" Click="ChooseFoodBtn_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
