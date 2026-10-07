@@ -30,18 +30,9 @@ namespace WpfApp1.Pages
         {
             comboBxRole.SelectedIndex = 0;
         }
-        void IsEmptyFields()
+        bool Registration(string mail, string pas1, string pas2, string lastName,int roleID=0)
         {
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) ||string.IsNullOrEmpty(TextBoxFio.Text) || string.IsNullOrEmpty(PasswordBox.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
-            {
-                MessageBox.Show("Заполните все поля!");
-                return;
-            }
-           
-        }
-        bool Registration(string log, string pas1, string pas2, string lastName)
-        {
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(TextBoxFio.Text) || string.IsNullOrEmpty(PasswordBox.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
+            if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(pas1) || string.IsNullOrEmpty(pas2) || string.IsNullOrEmpty(lastName))
             {
                 MessageBox.Show("Заполните все поля!");
                 return false;
@@ -52,15 +43,19 @@ namespace WpfApp1.Pages
                 {
                     if (CheakCorrectPassword(pas1))
                     {
-                        Users user = Core.kursEntities.Users.FirstOrDefault(a => a.Login == log);
+                        Users user = Core.kursEntities.Users.FirstOrDefault(a => a.Email == mail);
                         if (user is null)
                         {
                             Users newUser = new Users()
                             {
-                                Login =log,
+                                Email = mail,
                                 Password = pas1,
                                 IsActive = true,
+                                RoleId = roleID,
+                                CreatedAt = DateTime.Now,
+                                Phone = null
                             };
+                            return true;
                         }
                         else
                         {
@@ -111,6 +106,24 @@ namespace WpfApp1.Pages
             else{
                 return false;
             }
+        }
+
+        private void ButtonEnter_Click(object sender, RoutedEventArgs e)
+        {
+            if(comboBxRole.SelectedIndex == -1)
+            {
+                    if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password, TextBoxFio.Text))
+                    {
+                        MessageBox.Show("Вы зарегистрированы!");
+                    }
+            }
+            else{
+                if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password, TextBoxFio.Text, comboBxRole.SelectedIndex))
+                {
+                    MessageBox.Show("Вы зарегистрированы!");
+                }
+            }
+            
         }
     }
 }

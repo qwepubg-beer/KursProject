@@ -33,20 +33,20 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label  Content="Введите логин"  Width="auto" Grid.Row="0"/>
+            <Label  Content="Введите email"  Width="auto" Grid.Row="0"/>
             <Label  Content="Введите пароль"  Width="auto" Grid.Row="1"/>
             <Label  Content="Подтвердите пароль" Width="auto" Grid.Row="2"/>
             <Label  Content="Выбирите роль" Width="auto" Grid.Row="3"/>
             <Label  Content="Введите ФИО" Width="auto" Grid.Row="4"/>
-            <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134" Margin="5" Grid.Row="0"  Grid.Column="1"/>
+            <TextBox x:Name="TextBoxEmail" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134" Margin="5" Grid.Row="0"  Grid.Column="1"/>
             <TextBox x:Name="TextBoxFio" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134" Margin="5" Grid.Row="4"  Grid.Column="1"/>
             <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1" Margin="5" Grid.Row="1"/>
             <PasswordBox x:Name="PasswordBox2" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1" Margin="5" Grid.Row="2"/>
             <ComboBox x:Name="comboBxRole" Grid.Column="1" ToolTip="Выберите роль" Grid.Row="3"  RenderTransformOrigin="0.144,0.522" Height="37" Margin="5">
                 <ComboBoxItem Content="User" />
-                <ComboBoxItem Content="Admin" />
+                <ComboBoxItem Content="Treiner" />
             </ComboBox>
-            <Button x:Name="ButtonEnter" Height="34" Content="Зарегистрироваться" ToolTip="Кнопка входа"  Width="150" Margin="5" Grid.Row="5" Grid.ColumnSpan="2"></Button>
+            <Button x:Name="ButtonEnter" Height="34" Content="Зарегистрироваться" ToolTip="Кнопка входа"  Width="150" Margin="5" Grid.Row="5" Grid.ColumnSpan="2" Click="ButtonEnter_Click"></Button>
         </Grid>
     </Grid>
 </Page>

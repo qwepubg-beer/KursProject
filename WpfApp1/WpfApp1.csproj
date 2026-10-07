@@ -64,85 +64,102 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Activity.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB.cs">
+    <Compile Include="Db.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.edmx</DependentUpon>
     </Compile>
     <Compile Include="Equipment.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="ExerciseCategories.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Exercises.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="FoodCategories.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Foods.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Goals.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MealPlanItems.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MealPlans.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasureUnits.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MuscleGroups.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionTargets.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogMealPage.xaml.cs">
+      <DependentUpon>LogMealPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgramDays.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramExercises.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressMeasurements.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
     <Compile Include="res\Functions\Function.cs" />
-    <Compile Include="Goals.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MealPlanItems.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MealPlans.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MeasureUnits.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MuscleGroups.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NutritionTargets.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProgramDays.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramExercises.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressMeasurements.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="res\Functions\Core.cs" />
     <Compile Include="Roles.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="SleepLogs.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="TrainingPrograms.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="UserProfiles.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="UsersActivity.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Page Include="Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LogMealPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,16 +178,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -195,12 +202,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DB.edmx">
+    <EntityDeploy Include="Db.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Db.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
+    <None Include="Db.edmx.diagram">
+      <DependentUpon>Db.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -216,19 +223,19 @@
     <Folder Include="windows\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
-      <DependentUpon>DB.edmx</DependentUpon>
-    </Content>
-    <Content Include="DB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db.edmx</DependentUpon>
+      <LastGenOutput>Db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db.edmx</DependentUpon>
+      <LastGenOutput>Db.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

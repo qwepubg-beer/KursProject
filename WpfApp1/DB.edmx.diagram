@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f35e20fa247c4616afdb065927ebf9ea" Name="Diagram1">
+      <Diagram DiagramId="268a26ce6b084c31aec049a0b14e510e" Name="Diagram1">
         <EntityTypeShape EntityType="KursModel.Activity" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.Equipment" Width="1.5" PointX="8.25" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.ExerciseCategories" Width="1.5" PointX="8.25" PointY="25" IsExpanded="true" />
@@ -25,7 +25,7 @@
         <EntityTypeShape EntityType="KursModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.TrainingPrograms" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.UserProfiles" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Users" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Users" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.UsersActivity" Width="1.5" PointX="10.25" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="KursModel.FK_UsersActivity_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__Exercises__Equip__7B5B524B" ManuallyRouted="false" />
