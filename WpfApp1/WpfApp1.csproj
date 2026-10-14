@@ -114,6 +114,9 @@
     <Compile Include="NutritionTargets.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminListUser.xaml.cs">
+      <DependentUpon>AdminListUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LogActive.xaml.cs">
       <DependentUpon>LogActive.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
     <Compile Include="UsersActivity.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AdminListUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

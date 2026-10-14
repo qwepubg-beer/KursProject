@@ -1,0 +1,41 @@
+﻿<Page x:Class="WpfApp1.Pages.AdminListUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminListUser">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1" Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="Save" Width="Auto" Content="Сохранить" Click="Save_Click" Grid.Column="0"/>
+            <Button Name="Add" Width="Auto" Content="Добавить" Click="Add_Click" Grid.Column="1"/>
+        </Grid>
+        <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Row="1" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Почта" Binding="{Binding Email}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Phone}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Номер роли" Binding="{Binding RoleId}"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Roles.Name}" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

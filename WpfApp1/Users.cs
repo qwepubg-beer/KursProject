@@ -36,6 +36,7 @@ namespace WpfApp1
         public int RoleId { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime CreatedAt { get; set; }
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MealPlans> MealPlans { get; set; }
