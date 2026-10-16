@@ -20,6 +20,7 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         private int failedAttempts = 0;
         private Users currentUser;
         public AuthPage()
@@ -42,8 +43,7 @@ namespace WpfApp1.Pages
             using (var db = new KursEntities())
             {
                 var user = db.Users
-                .AsNoTracking()
-                .FirstOrDefault(u => u.Login == TextBoxLogin.Text &&
+                .AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text &&
                 u.Password == hashedPassword);
 
                 if (user == null)
@@ -64,11 +64,11 @@ namespace WpfApp1.Pages
                 {
                     MessageBox.Show("Пользователь успешно найден!");
 
-                    switch (user.Roles.Name)
+                    switch (user.RoleId)
                     {
-                        case "User":
+                        case 1:
                             break;
-                        case "Admin":
+                        case 2:
                             break;
 
                     }

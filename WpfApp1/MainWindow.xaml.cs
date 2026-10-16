@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Pages;
+using WpfApp1.res;
+using static WpfApp1.Function;
 
 namespace WpfApp1
 {
@@ -42,6 +44,12 @@ namespace WpfApp1
             else
 
                 e.Cancel = false;
+        }
+        public void LoadDate()
+        {
+            if (IsEnter() && Core.user.RoleId == 3) { }
+            if (IsEnter() && Core.user.RoleId == 2 && Core.user.IsActive) { }
+            if (IsEnter() && Core.user.IsActive) {}
         }
     }
 }

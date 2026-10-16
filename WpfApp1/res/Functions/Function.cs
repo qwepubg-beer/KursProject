@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using WpfApp1.res;
 
 namespace WpfApp1
 {
@@ -18,5 +19,6 @@ namespace WpfApp1
                 x.ToString("X2")));
             }
         }
+        public static bool IsEnter()=>Core.user != null; 
     }
 }
