@@ -57,7 +57,6 @@ namespace WpfApp1.Pages
                 else
                 {
                     MessageBox.Show("Пользователь успешно найден!");
-
                     switch (user.RoleId)
                     {
                         case 1:
@@ -95,7 +94,6 @@ private void submitCaptcha_Click(object sender, RoutedEventArgs e)
         public void CaptchaChange()
 
         {
-
             String allowchar = " ";
             allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
             allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z";
@@ -120,34 +118,17 @@ private void submitCaptcha_Click(object sender, RoutedEventArgs e)
                 case Visibility.Visible:
                     TextBoxLogin.Clear();
                     PasswordBox.Clear();
-                    captcha.Visibility = Visibility.Hidden;
-                    captchaInput.Visibility = Visibility.Hidden;
-                    labelCaptcha.Visibility = Visibility.Hidden;
-                    submitCaptcha.Visibility = Visibility.Hidden;
-                    TextBoxLogin.Visibility = Visibility.Visible;
-                    PasswordBox.Visibility = Visibility.Visible;
-                    ButtonChangePassword.Visibility = Visibility.Visible;
-                    ButtonEnter.Visibility = Visibility.Visible;
-                    ButtonReg.Visibility = Visibility.Visible;
+                    MainFiels.Visibility = Visibility.Visible;
                     return;
                 case Visibility.Hidden:
-                    captcha.Visibility = Visibility.Visible;
-                    captchaInput.Visibility = Visibility.Visible;
-                    labelCaptcha.Visibility = Visibility.Visible;
-                    submitCaptcha.Visibility = Visibility.Visible;
-
-                    TextBoxLogin.Visibility = Visibility.Hidden;
-                    PasswordBox.Visibility = Visibility.Hidden;
-
-                    ButtonChangePassword.Visibility = Visibility.Hidden;
-                    ButtonEnter.Visibility = Visibility.Hidden;
-                    ButtonReg.Visibility = Visibility.Hidden;
+                    CapchaPanel.Visibility = Visibility.Visible;
+                    MainFiels.Visibility = Visibility.Hidden;
                     return;
             }
         }
         private void ButtonChangePassword_Click(object sender, RoutedEventArgs e)
         {
-           // NavigationService?.Navigate(new ChangePassPage());
+           NavigationService?.Navigate(new ChangePassPage());
         }
 
         private void ButtonReg_Click(object sender, RoutedEventArgs e)

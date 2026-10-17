@@ -17,14 +17,16 @@ VerticalAlignment="Top">
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+        <StackPanel x:Name="MainFiels" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+            <Label Content="Логин" HorizontalAlignment="Center"></Label>
             <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134" Margin="5"/>
+            <Label Content="Пароль" HorizontalAlignment="Center"></Label>
             <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1" Margin="5"/>
             <Button x:Name="ButtonEnter" Height="34" Content="Вход" ToolTip="Кнопка входа"  Width="120" Margin="5" Click="ButtonEnter_Click"/>
             <Button x:Name="ButtonReg"  Height="34" Content="Регистрация" ToolTip="Кнопка регистрации"  Width="120" Margin="5" Click="ButtonChangePassword_Click"/>
             <Button x:Name="ButtonChangePassword" Height="34" Content="Забыл пароль" ToolTip="Кнопка забыл пароль" Grid.Row="1" Width="120" Margin="5" Click="ButtonReg_Click"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+        <StackPanel x:Name="CapchaPanel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
             <Label Content="Капча:" Name="labelCaptcha" HorizontalAlignment="Left" Width="54" Visibility="Hidden"/> 
         <TextBox Grid.Column="1" CommandManager.PreviewExecuted="textBox_PreviewExecuted" ContextMenu="{x:Null}" Visibility="Hidden" x:Name="captcha" Height="42" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" VerticalAlignment="Top" Width="156" Background="{x:Null}" FontStretch="UltraCondensed" IsReadOnly="True" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="20" />
         <TextBox Grid.Column="1" Visibility="Hidden" x:Name="captchaInput" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" />
