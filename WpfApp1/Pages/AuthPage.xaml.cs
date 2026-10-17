@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.res;
 using static WpfApp1.Function;
 namespace WpfApp1.Pages
 {
@@ -37,15 +38,8 @@ namespace WpfApp1.Pages
                 MessageBox.Show("Введите логин или пароль");
                 return;
             }
-
             string hashedPassword = GetHash(PasswordBox.Password);
-
-            using (var db = new KursEntities())
-            {
-                var user = db.Users
-                .AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text &&
-                u.Password == hashedPassword);
-
+            var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == hashedPassword);
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь с такими данными не найден!");
@@ -73,7 +67,6 @@ namespace WpfApp1.Pages
 
                     }
                 }
-            }
         }
 private void submitCaptcha_Click(object sender, RoutedEventArgs e)
         {

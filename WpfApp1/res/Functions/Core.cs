@@ -10,5 +10,8 @@ namespace WpfApp1.res
     {
         public static KursEntities kursEntities =new KursEntities();
         public static Users user = null;
+        public const int CaloriesInProt = 4;
+        public const int CaloriesInFat = 10;
+        public const int CaloriesInCarb = 4;
     }
 }

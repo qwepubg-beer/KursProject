@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.res;
-
+using static WpfApp1.Function;
 namespace WpfApp1.Pages
 {
     /// <summary>
@@ -43,6 +43,8 @@ namespace WpfApp1.Pages
                 {
                     if (CheakCorrectPassword(pas1))
                     {
+                        if(IsValidEmail(mail))
+                        {
                         Users user = Core.kursEntities.Users.FirstOrDefault(a => a.Email == mail);
                         if (user is null)
                         {
@@ -60,6 +62,12 @@ namespace WpfApp1.Pages
                         else
                         {
                             MessageBox.Show("Пользователь уже зарегистрирован!");
+                            return false;
+                        }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email не существует!");
                             return false;
                         }
                     }
