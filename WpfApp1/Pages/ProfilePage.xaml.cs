@@ -24,16 +24,36 @@ namespace WpfApp1.Pages
         public ProfilePage()
         {
             InitializeComponent();
+            СomboBxGoal.ItemsSource = Core.kursEntities.Goals.ToList();
         }
         void LoadData()
         {
-            TextBoxFIO = Core.profile.LastName + " " + Core.profile.FirstName + " " + Core.profile.MiddleName;
-            birthday.DisplayDate = Core.profile.BirthDate;
-            СomboBxGender.SelectedIndex = Core.profile.Gender == 'м' ? 0 : 1;
+            TextBoxFIO.Text = Core.profile.LastName + " " + Core.profile.FirstName + " " + Core.profile.MiddleName;
+            birthday.DisplayDate = Core.profile.BirthDate.Value;
+            СomboBxGender.SelectedIndex = Core.profile.Gender == "м" ? 0 : 1;
+            TextBoxMN.Text = Core.profile.MedicalNotes;
+            СomboBxGoal.SelectedValue = Core.profile.Goals;
+            Height.Text=Core.profile.HeightCm.ToString();
+            Weight.Text = Core.profile.WeightKg.ToString();
         }
         private void ButtonChange_Click(object sender, RoutedEventArgs e)
         {
-            
+            UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u=>u.ProfileId==Core.profile.ProfileId);
+            if (userProfiles != null)
+            {
+               List<string> list = TextBoxFIO.Text.Split(' ').ToList();
+                userProfiles.FirstName = list[1];
+                userProfiles.LastName = list[0];
+                userProfiles.MiddleName = list[2];
+                userProfiles.Gender = СomboBxGender.SelectedIndex == 0 ? "м" : "ж";
+                userProfiles.GoalId = СomboBxGoal.SelectedIndex;
+                userProfiles.BirthDate = birthday.DisplayDate;
+                Core.kursEntities.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

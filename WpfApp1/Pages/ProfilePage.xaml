@@ -51,7 +51,7 @@
                 <ComboBoxItem Content="Женщина"></ComboBoxItem>
             </ComboBox>
             <DatePicker Name="birthday" Grid.Column="1" Margin="5" Grid.Row="1"></DatePicker>
-            <ComboBox x:Name="СomboBxGoal" Grid.Column="1" ToolTip="Выберите гендер" Grid.Row="8" Height="37" Margin="5"/>
+            <ComboBox x:Name="СomboBxGoal" Grid.Column="1" ToolTip="Выберите цель" Grid.Row="8" Margin="5" DisplayMemberPath="Name" SelectedValuePath="GoalId"/>
             <Button x:Name="ButtonChange" Height="34" Content="Изменить" ToolTip="Кнопка входа"  Width="150" Margin="5" Grid.Row="9" Grid.ColumnSpan="2" Click="ButtonChange_Click"></Button>
         </Grid>
     </Grid>
