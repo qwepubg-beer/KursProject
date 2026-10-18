@@ -19,9 +19,9 @@ namespace WpfApp1
                 x.ToString("X2")));
             }
         }
-    public static bool IsEnter() => Core.user != null; 
+        public static bool IsEnter() => Core.user != null;
 
-    public static bool IsValidEmail(string email)
+        public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
                 return false;
@@ -36,6 +36,27 @@ namespace WpfApp1
                 return false;
             }
         }
-    }   
+        public static int CalculateAge(DateTime birthDate)
+        {
+            DateTime today = DateTime.Today;
+            int age = today.Year - birthDate.Year;
+            if (birthDate.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+            return age;
+        }
+        static public double BMR(UserProfiles profile)
+    {
+            if (profile.Gender == "м")
+                return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) + 5);
+            else
+            {
+                return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) - 161);
+            }
+        }
+
+    }
+    }
 }
 

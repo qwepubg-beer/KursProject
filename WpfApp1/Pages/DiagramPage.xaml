@@ -20,12 +20,12 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <WindowsFormsHost Grid.Row="1" Grid.ColumnSpan="4">
-<charts:Chart x:Name="ChartPayments">
- <charts:Chart.Legends>
- <charts:Legend>
- </charts:Legend>
- </charts:Chart.Legends>
- </charts:Chart>
+            <charts:Chart x:Name="ChartEnergyBalance">
+                <charts:Chart.Legends>
+                    <charts:Legend Name="MainLegend" Docking="Top" Alignment="Center">
+                    </charts:Legend>
+                </charts:Chart.Legends>
+            </charts:Chart>
         </WindowsFormsHost>
         <Label Content="Тип диаграммы: " HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
         <ComboBox Name="TypeDiagram" Margin="10" Grid.Column="1">

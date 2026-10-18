@@ -30,9 +30,9 @@ namespace WpfApp1.Pages
         {
             comboBxRole.SelectedIndex = 0;
         }
-        bool Registration(string mail, string pas1, string pas2, string lastName,int roleID=0)
+        bool Registration(string mail, string pas1, string pas2,int roleID=0)
         {
-            if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(pas1) || string.IsNullOrEmpty(pas2) || string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(pas1) || string.IsNullOrEmpty(pas2))
             {
                 MessageBox.Show("Заполните все поля!");
                 return false;
@@ -124,13 +124,13 @@ namespace WpfApp1.Pages
         {
             if(comboBxRole.SelectedIndex == -1)
             {
-                    if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password, TextBoxFio.Text))
+                    if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password))
                     {
                         MessageBox.Show("Вы зарегистрированы!");
                     }
             }
             else{
-                if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password, TextBoxFio.Text, comboBxRole.SelectedIndex))
+                if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password,comboBxRole.SelectedIndex))
                 {
                     MessageBox.Show("Вы зарегистрированы!");
                 }
