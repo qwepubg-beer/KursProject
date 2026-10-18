@@ -57,6 +57,8 @@ namespace WpfApp1.Pages
                 else
                 {
                     MessageBox.Show("Пользователь успешно найден!");
+                    Core.user= user;
+                    Core.SelectProfile();
                     switch (user.RoleId)
                     {
                         case 1:

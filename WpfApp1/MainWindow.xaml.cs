@@ -40,10 +40,11 @@ namespace WpfApp1
         {
             if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
             MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No)
+            {
+                Core.Clear();
                 e.Cancel = true;
-            else
-
-                e.Cancel = false;
+            }
+            else {  e.Cancel = false; }
         }
         public void LoadDate()
         {

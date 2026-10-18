@@ -57,7 +57,10 @@ namespace WpfApp1.Pages
                                 CreatedAt = DateTime.Now,
                                 Phone = null
                             };
-                            Core.kursEntities.Users.SaveChanges();
+                            UserProfiles userProfiles = new UserProfiles();
+                            Core.kursEntities.Users.Add(newUser);
+                            Core.kursEntities.UserProfiles.Add(userProfiles);
+                            Core.kursEntities.SaveChanges();
                             return true;
                         }
                         else
