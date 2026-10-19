@@ -48,9 +48,44 @@ namespace WpfApp1
         }
         public void LoadDate()
         {
-            if (IsEnter() && Core.user.RoleId == 3) { }
-            if (IsEnter() && Core.user.RoleId == 2 && Core.user.IsActive) { }
-            if (IsEnter() && Core.user.IsActive) {}
+            if (IsEnter() && Core.user.IsActive) 
+            {
+                switch (Core.user.RoleId)
+                { 
+                    case 1: User_menu.Visibility = Visibility.Visible;
+                        break;
+                    case 2: 
+                        break;
+                    case 3:
+                        Admin_menu.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
+        }
+
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ProfilePage());
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AdminListUser());
+        }
+
+        private void Diagrams_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new DiagramPage());
+        }
+
+        private void Measurement_Click(object sender, RoutedEventArgs e)
+        {
+            //MainFrame.NavigationService.Navigate(new AuthPage());
+        }
+
+        private void Records_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new RecordsPage());
         }
     }
 }
