@@ -37,19 +37,23 @@
             </Grid.ColumnDefinitions>
             <Label  Content="ФИО"  Width="auto" Grid.Row="0" HorizontalAlignment="Right"/>
             <Label  Content="Гендер" Width="auto" Grid.Row="2" HorizontalAlignment="Right"/>
-            <Label  Content="Ваш рост" Width="auto" Grid.Row="6" HorizontalAlignment="Right"/>
-            <Label  Content="Ваша цель" Width="auto" Grid.Row="7" HorizontalAlignment="Right"/>
+            <Label  Content="Ваш рост" Width="auto" Grid.Row="5" HorizontalAlignment="Right"/>
+            <Label  Content="Ваша цель" Width="auto" Grid.Row="6" HorizontalAlignment="Right"/>
             <Label  Content="Дата рождения" Width="auto" Grid.Row="1" HorizontalAlignment="Right"/>
             <Label  Content="Медицинские противопоказания" Width="auto" Grid.Row="3" HorizontalAlignment="Right"/>
-            <TextBox x:Name="TextBoxFIO" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Margin="5" Grid.Row="0"  Grid.Column="1"/>
-            <TextBox x:Name="TextBoxMN" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту"  Margin="5" Grid.Row="3" Grid.RowSpan="3"  Grid.Column="1"/>
-            <TextBox x:Name="Height" Background="Transparent" ToolTip="Введите пароль" Grid.Column="1" Margin="5" Grid.Row="6"/>
+            <Label  Content="Телефон" Width="auto" Grid.Row="7" HorizontalAlignment="Right"/>
+            <TextBox x:Name="TextBoxFIO" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите фио" Margin="5" Grid.Row="0"  Grid.Column="1"/>
+            <ScrollViewer Margin="5" Grid.Row="3" Grid.RowSpan="2"  Grid.Column="1" CanContentScroll="True">
+                <TextBox x:Name="TextBoxMN" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите противопоказания"/>
+            </ScrollViewer>
+            <TextBox x:Name="Height" Background="Transparent" ToolTip="Введите пароль" Grid.Column="1" Margin="5" Grid.Row="5"/>
+            <TextBox x:Name="Number" Background="Transparent" ToolTip="Введите телефон" Grid.Column="1" Margin="5" Grid.Row="7"/>
             <ComboBox x:Name="СomboBxGender" Grid.Column="1" ToolTip="Выберите гендер" Grid.Row="2" Height="37" Margin="5">
                 <ComboBoxItem Content="Мужчина"></ComboBoxItem>
                 <ComboBoxItem Content="Женщина"></ComboBoxItem>
             </ComboBox>
             <DatePicker Name="birthday" Grid.Column="1" Margin="5" Grid.Row="1"></DatePicker>
-            <ComboBox x:Name="СomboBxGoal" Grid.Column="1" ToolTip="Выберите цель" Grid.Row="7" Margin="5" DisplayMemberPath="Name" SelectedValuePath="GoalId"/>
+            <ComboBox x:Name="СomboBxGoal" Grid.Column="1" ToolTip="Выберите цель" Grid.Row="6" Margin="5" DisplayMemberPath="Name" SelectedValuePath="GoalId"/>
             <Button x:Name="ButtonChange" Height="34" Content="Изменить"  Width="150" Margin="5" Grid.Row="8" Grid.ColumnSpan="2" Click="ButtonChange_Click"></Button>
             <Button x:Name="ButtonChangePass" Height="34" Content="Изменить пароль"  Width="150" Margin="5" Grid.Row="9" Grid.ColumnSpan="2" Click="ButtonChangePass_Click"></Button>
         </Grid>
