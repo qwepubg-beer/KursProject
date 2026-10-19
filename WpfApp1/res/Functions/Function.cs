@@ -45,17 +45,18 @@ namespace WpfApp1
             }
             return age;
         }
+        /*
         static public double BMR(UserProfiles profile)
     {
-            if (profile.Gender == "м")
-                return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) + 5);
+            if (profile.Gender == "м") { }
+                //return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) + 5);
             else
             {
-                return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) - 161);
+                //return (10 * profile.WeightKg) + (6.25 * profile.HeightCm) - (5 * CalculateAge(profile.BirthDate.Value) - 161);
             }
         }
 
-    }
+    }*/
     }
 }
 

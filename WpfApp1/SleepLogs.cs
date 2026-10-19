@@ -16,9 +16,7 @@ namespace WpfApp1
     {
         public int SleepLogId { get; set; }
         public System.DateTime SleepDate { get; set; }
-        public System.DateTime BedTime { get; set; }
-        public System.DateTime WakeTime { get; set; }
-        public Nullable<byte> QualityScore { get; set; }
+        public byte QualityScore { get; set; }
         public string Notes { get; set; }
         public int UserID { get; set; }
     

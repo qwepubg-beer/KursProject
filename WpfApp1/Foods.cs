@@ -17,22 +17,21 @@ namespace WpfApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Foods()
         {
-            this.MealPlanItems = new HashSet<MealPlanItems>();
+            this.Meal_Foods = new HashSet<Meal_Foods>();
         }
     
         public int FoodId { get; set; }
         public string Name { get; set; }
         public int CategoryId { get; set; }
-        public int UnitId { get; set; }
-        public decimal Calories { get; set; }
-        public decimal ProteinG { get; set; }
-        public decimal FatG { get; set; }
-        public decimal CarbsG { get; set; }
-        public Nullable<decimal> FiberG { get; set; }
+        public double Calories { get; set; }
+        public double ProteinG { get; set; }
+        public double FatG { get; set; }
+        public double CarbsG { get; set; }
+        public Nullable<double> FiberG { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual FoodCategories FoodCategories { get; set; }
-        public virtual MeasureUnits MeasureUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MealPlanItems> MealPlanItems { get; set; }
+        public virtual ICollection<Meal_Foods> Meal_Foods { get; set; }
     }
 }

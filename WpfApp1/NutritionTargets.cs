@@ -18,9 +18,9 @@ namespace WpfApp1
         public System.DateTime ValidFrom { get; set; }
         public System.DateTime ValidTo { get; set; }
         public int CaloriesTarget { get; set; }
-        public decimal ProteinTargetG { get; set; }
-        public decimal FatTargetG { get; set; }
-        public decimal CarbsTargetG { get; set; }
+        public int ProteinTargetG { get; set; }
+        public int FatTargetG { get; set; }
+        public int CarbsTargetG { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> TrainerID { get; set; }
     

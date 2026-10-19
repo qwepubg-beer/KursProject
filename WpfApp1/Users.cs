@@ -17,15 +17,13 @@ namespace WpfApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.MealPlans = new HashSet<MealPlans>();
-            this.MealPlans1 = new HashSet<MealPlans>();
+            this.Meal = new HashSet<Meal>();
             this.NutritionTargets = new HashSet<NutritionTargets>();
             this.NutritionTargets1 = new HashSet<NutritionTargets>();
             this.ProgressMeasurements = new HashSet<ProgressMeasurements>();
             this.SleepLogs = new HashSet<SleepLogs>();
             this.TrainingPrograms = new HashSet<TrainingPrograms>();
             this.TrainingPrograms1 = new HashSet<TrainingPrograms>();
-            this.UserProfiles = new HashSet<UserProfiles>();
             this.UsersActivity = new HashSet<UsersActivity>();
         }
     
@@ -36,12 +34,9 @@ namespace WpfApp1
         public int RoleId { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime CreatedAt { get; set; }
-
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MealPlans> MealPlans { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MealPlans> MealPlans1 { get; set; }
+        public virtual ICollection<Meal> Meal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NutritionTargets> NutritionTargets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -55,8 +50,7 @@ namespace WpfApp1
         public virtual ICollection<TrainingPrograms> TrainingPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrainingPrograms> TrainingPrograms1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
+        public virtual UserProfiles UserProfiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersActivity> UsersActivity { get; set; }
     }

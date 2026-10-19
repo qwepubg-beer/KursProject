@@ -21,6 +21,7 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class RegPage : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         public RegPage()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace WpfApp1.Pages
         {
             comboBxRole.SelectedIndex = 0;
         }
-        bool Registration(string mail, string pas1, string pas2,int roleID=0)
+        bool Registration(string mail, string pas1, string pas2,int roleID=1)
         {
             if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(pas1) || string.IsNullOrEmpty(pas2))
             {
@@ -51,7 +52,7 @@ namespace WpfApp1.Pages
                             Users newUser = new Users()
                             {
                                 Email = mail,
-                                Password = pas1,
+                                Password = GetHash(pas1),
                                 IsActive = true,
                                 RoleId = roleID,
                                 CreatedAt = DateTime.Now,
@@ -59,6 +60,7 @@ namespace WpfApp1.Pages
                             };
                             UserProfiles userProfiles = new UserProfiles();
                             Core.kursEntities.Users.Add(newUser);
+                            Core.kursEntities.SaveChanges();
                             Core.kursEntities.UserProfiles.Add(userProfiles);
                             Core.kursEntities.SaveChanges();
                             return true;
@@ -127,12 +129,14 @@ namespace WpfApp1.Pages
                     if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password))
                     {
                         MessageBox.Show("Вы зарегистрированы!");
+                        mainWindow.MainFrame.NavigationService.Navigate(new AuthPage());
                     }
             }
             else{
                 if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password,comboBxRole.SelectedIndex))
                 {
                     MessageBox.Show("Вы зарегистрированы!");
+                    mainWindow.MainFrame.NavigationService.Navigate(new AuthPage());
                 }
             }
             

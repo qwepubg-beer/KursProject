@@ -14,17 +14,15 @@ namespace WpfApp1
     
     public partial class UserProfiles
     {
-        public int ProfileId { get; set; }
-        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
         public string Gender { get; set; }
-        public Nullable<decimal> HeightCm { get; set; }
-        public Nullable<decimal> WeightKg { get; set; }
-        public int GoalId { get; set; }
+        public Nullable<double> HeightCm { get; set; }
+        public Nullable<int> GoalId { get; set; }
         public string MedicalNotes { get; set; }
+        public int ProfileID { get; set; }
     
         public virtual Goals Goals { get; set; }
         public virtual Users Users { get; set; }

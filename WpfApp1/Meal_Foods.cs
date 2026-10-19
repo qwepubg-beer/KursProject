@@ -12,16 +12,14 @@ namespace WpfApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class MealPlanItems
+    public partial class Meal_Foods
     {
-        public int ItemId { get; set; }
-        public int MealPlanId { get; set; }
-        public byte DayNumber { get; set; }
-        public string MealType { get; set; }
-        public int FoodId { get; set; }
-        public decimal AmountG { get; set; }
+        public int Id { get; set; }
+        public int MealID { get; set; }
+        public int FoodID { get; set; }
+        public int WeightInG { get; set; }
     
         public virtual Foods Foods { get; set; }
-        public virtual MealPlans MealPlans { get; set; }
+        public virtual Meal Meal { get; set; }
     }
 }

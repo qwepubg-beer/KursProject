@@ -36,15 +36,16 @@ namespace WpfApp1
                 MainFrame.NavigationService.GoBack();
             }
         }
-        void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
-            MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No)
-            {
-                Core.Clear();
-                e.Cancel = true;
-            }
-            else {  e.Cancel = false; }
+            var result = MessageBox.Show(
+                "Закрыть приложение?",
+                "Подтверждение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+                this.Close();
         }
         public void LoadDate()
         {

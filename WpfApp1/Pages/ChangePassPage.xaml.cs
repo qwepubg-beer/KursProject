@@ -37,7 +37,7 @@ namespace WpfApp1.Pages
             {
                 var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == GetHash(PasswordBox.Password));
                 user.Password = GetHash(PasswordBox2.Password);
-                Core.kursEntities.Users.SaveChanges();
+                Core.kursEntities.SaveChanges();
                 MessageBox.Show("Пароль был изменён!");
             }
         }

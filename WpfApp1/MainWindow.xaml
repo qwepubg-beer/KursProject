@@ -43,6 +43,6 @@
             <Button Name="Users" Click="Users_Click" Grid.Row="1"></Button>
         </Grid>
         <Button Name="Back" Click="Back_Click"> </Button>
-        <Button Name="Exit" Grid.Row="7" Click="Window_Closing" ></Button>
+        <Button Name="Exit" Grid.Row="7"  Click="CloseButton_Click"></Button>
     </Grid>
 </Window>

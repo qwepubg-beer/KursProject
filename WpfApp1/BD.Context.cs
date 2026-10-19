@@ -32,9 +32,8 @@ namespace WpfApp1
         public virtual DbSet<FoodCategories> FoodCategories { get; set; }
         public virtual DbSet<Foods> Foods { get; set; }
         public virtual DbSet<Goals> Goals { get; set; }
-        public virtual DbSet<MealPlanItems> MealPlanItems { get; set; }
-        public virtual DbSet<MealPlans> MealPlans { get; set; }
-        public virtual DbSet<MeasureUnits> MeasureUnits { get; set; }
+        public virtual DbSet<Meal> Meal { get; set; }
+        public virtual DbSet<Meal_Foods> Meal_Foods { get; set; }
         public virtual DbSet<MuscleGroups> MuscleGroups { get; set; }
         public virtual DbSet<NutritionTargets> NutritionTargets { get; set; }
         public virtual DbSet<ProgramDays> ProgramDays { get; set; }

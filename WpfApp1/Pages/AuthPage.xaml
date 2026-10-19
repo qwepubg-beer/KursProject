@@ -23,8 +23,8 @@ VerticalAlignment="Top">
             <Label Content="Пароль" HorizontalAlignment="Center"></Label>
             <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1" Margin="5"/>
             <Button x:Name="ButtonEnter" Height="34" Content="Вход" ToolTip="Кнопка входа"  Width="120" Margin="5" Click="ButtonEnter_Click"/>
-            <Button x:Name="ButtonReg"  Height="34" Content="Регистрация" ToolTip="Кнопка регистрации"  Width="120" Margin="5" Click="ButtonChangePassword_Click"/>
-            <Button x:Name="ButtonChangePassword" Height="34" Content="Забыл пароль" ToolTip="Кнопка забыл пароль" Grid.Row="1" Width="120" Margin="5" Click="ButtonReg_Click"/>
+            <Button x:Name="ButtonReg"  Height="34" Content="Регистрация" ToolTip="Кнопка регистрации"  Width="120" Margin="5" Click="ButtonReg_Click"/>
+            <Button x:Name="ButtonChangePassword" Height="34" Content="Забыл пароль" ToolTip="Кнопка забыл пароль" Grid.Row="1" Width="120" Margin="5" Click="ButtonChangePassword_Click"/>
         </StackPanel>
         <StackPanel x:Name="CapchaPanel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
             <Label Content="Капча:" Name="labelCaptcha" HorizontalAlignment="Left" Width="54" Visibility="Hidden"/> 

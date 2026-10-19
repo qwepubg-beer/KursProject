@@ -16,12 +16,12 @@ namespace WpfApp1
     {
         public int MeasurementId { get; set; }
         public System.DateTime MeasuredAt { get; set; }
-        public Nullable<decimal> WeightKg { get; set; }
-        public Nullable<decimal> ChestCm { get; set; }
-        public Nullable<decimal> WaistCm { get; set; }
-        public Nullable<decimal> HipsCm { get; set; }
-        public Nullable<decimal> BicepsCm { get; set; }
-        public Nullable<decimal> BodyFatPct { get; set; }
+        public double WeightKg { get; set; }
+        public Nullable<double> ChestCm { get; set; }
+        public Nullable<double> WaistCm { get; set; }
+        public Nullable<double> HipsCm { get; set; }
+        public Nullable<double> BicepsCm { get; set; }
+        public Nullable<double> BodyFatPct { get; set; }
         public int UserID { get; set; }
     
         public virtual Users Users { get; set; }

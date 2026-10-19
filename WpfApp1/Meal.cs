@@ -12,19 +12,20 @@ namespace WpfApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class MeasureUnits
+    public partial class Meal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MeasureUnits()
+        public Meal()
         {
-            this.Foods = new HashSet<Foods>();
+            this.Meal_Foods = new HashSet<Meal_Foods>();
         }
     
-        public int UnitId { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public int MealId { get; set; }
+        public System.DateTime Date { get; set; }
+        public int ClientID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Foods> Foods { get; set; }
+        public virtual ICollection<Meal_Foods> Meal_Foods { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

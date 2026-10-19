@@ -59,14 +59,7 @@ namespace WpfApp1.Pages
                     MessageBox.Show("Пользователь успешно найден!");
                     Core.user= user;
                     Core.SelectProfile();
-                    switch (user.RoleId)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-
-                    }
+                mainWindow.LoadDate();
                 }
         }
 private void submitCaptcha_Click(object sender, RoutedEventArgs e)

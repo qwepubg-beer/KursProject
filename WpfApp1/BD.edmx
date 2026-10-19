@@ -9,43 +9,43 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MET" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MET" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="EquipmentId" />
           </Key>
           <Property Name="EquipmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="ExerciseCategories">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="Exercises">
           <Key>
             <PropertyRef Name="ExerciseId" />
           </Key>
           <Property Name="ExerciseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="MuscleGroupId" Type="int" Nullable="false" />
           <Property Name="EquipmentId" Type="int" Nullable="false" />
-          <Property Name="VideoUrl" Type="varchar" MaxLength="260" />
-          <Property Name="ImagePath" Type="varchar" MaxLength="260" />
+          <Property Name="VideoUrl" Type="nvarchar" MaxLength="260" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="260" />
         </EntityType>
         <EntityType Name="FoodCategories">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="Foods">
           <Key>
@@ -54,57 +54,43 @@
           <Property Name="FoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
-          <Property Name="UnitId" Type="int" Nullable="false" />
-          <Property Name="Calories" Type="decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="ProteinG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FatG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="CarbsG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FiberG" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Calories" Type="float" Nullable="false" />
+          <Property Name="ProteinG" Type="float" Nullable="false" />
+          <Property Name="FatG" Type="float" Nullable="false" />
+          <Property Name="CarbsG" Type="float" Nullable="false" />
+          <Property Name="FiberG" Type="float" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Goals">
           <Key>
             <PropertyRef Name="GoalId" />
           </Key>
           <Property Name="GoalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <EntityType Name="MealPlanItems">
+        <EntityType Name="Meal">
           <Key>
-            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="MealId" />
           </Key>
-          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MealPlanId" Type="int" Nullable="false" />
-          <Property Name="DayNumber" Type="tinyint" Nullable="false" />
-          <Property Name="MealType" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="FoodId" Type="int" Nullable="false" />
-          <Property Name="AmountG" Type="decimal" Precision="7" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MealPlans">
-          <Key>
-            <PropertyRef Name="MealPlanId" />
-          </Key>
-          <Property Name="MealPlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="StartDate" Type="date" Nullable="false" />
-          <Property Name="EndDate" Type="date" />
-          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="MealId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="ClientID" Type="int" Nullable="false" />
-          <Property Name="TreinerID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="MeasureUnits">
+        <EntityType Name="Meal_Foods">
           <Key>
-            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MealID" Type="int" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="WeightInG" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MuscleGroups">
           <Key>
             <PropertyRef Name="MuscleGroupId" />
           </Key>
           <Property Name="MuscleGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="ParentId" Type="int" />
         </EntityType>
         <EntityType Name="NutritionTargets">
@@ -115,9 +101,9 @@
           <Property Name="ValidFrom" Type="date" Nullable="false" />
           <Property Name="ValidTo" Type="date" Nullable="false" />
           <Property Name="CaloriesTarget" Type="int" Nullable="false" />
-          <Property Name="ProteinTargetG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FatTargetG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="CarbsTargetG" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ProteinTargetG" Type="int" Nullable="false" />
+          <Property Name="FatTargetG" Type="int" Nullable="false" />
+          <Property Name="CarbsTargetG" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" />
           <Property Name="TrainerID" Type="int" />
         </EntityType>
@@ -140,8 +126,8 @@
           <Property Name="ExerciseId" Type="int" Nullable="false" />
           <Property Name="OrderIndex" Type="smallint" Nullable="false" />
           <Property Name="Sets" Type="tinyint" Nullable="false" />
-          <Property Name="Reps" Type="varchar" MaxLength="16" />
-          <Property Name="WeightKg" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Reps" Type="int" />
+          <Property Name="WeightKg" Type="float" />
           <Property Name="RestSeconds" Type="smallint" />
           <Property Name="Notes" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -151,21 +137,21 @@
           </Key>
           <Property Name="MeasurementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MeasuredAt" Type="date" Nullable="false" />
-          <Property Name="WeightKg" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="ChestCm" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="WaistCm" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="HipsCm" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="BicepsCm" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="BodyFatPct" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="WeightKg" Type="float" Nullable="false" />
+          <Property Name="ChestCm" Type="float" />
+          <Property Name="WaistCm" Type="float" />
+          <Property Name="HipsCm" Type="float" />
+          <Property Name="BicepsCm" Type="float" />
+          <Property Name="BodyFatPct" Type="float" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="SleepLogs">
           <Key>
@@ -173,10 +159,8 @@
           </Key>
           <Property Name="SleepLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SleepDate" Type="date" Nullable="false" />
-          <Property Name="BedTime" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="WakeTime" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="QualityScore" Type="tinyint" />
-          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="QualityScore" Type="tinyint" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -194,40 +178,38 @@
             <PropertyRef Name="ProgramId" />
           </Key>
           <Property Name="ProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="GoalId" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" />
           <Property Name="SessionsPerWeek" Type="tinyint" Nullable="false" />
           <Property Name="Notes" Type="nvarchar(max)" />
-          <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedAt" Type="date" />
           <Property Name="ClientID" Type="int" Nullable="false" />
           <Property Name="TrainerID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserProfiles">
           <Key>
-            <PropertyRef Name="ProfileId" />
+            <PropertyRef Name="ProfileID" />
           </Key>
-          <Property Name="ProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="MiddleName" Type="varchar" MaxLength="64" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="64" />
           <Property Name="BirthDate" Type="date" />
           <Property Name="Gender" Type="char" MaxLength="1" />
-          <Property Name="HeightCm" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="WeightKg" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="GoalId" Type="int" Nullable="false" />
+          <Property Name="HeightCm" Type="float" />
+          <Property Name="GoalId" Type="int" />
           <Property Name="MedicalNotes" Type="nvarchar(max)" />
+          <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Phone" Type="varchar" MaxLength="20" />
-          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
@@ -236,7 +218,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="ActivityID" Type="int" Nullable="false" />
           <Property Name="TimeMin" Type="int" Nullable="false" />
@@ -290,42 +272,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foods__UnitId__07C12930">
-          <End Role="MeasureUnits" Type="Self.MeasureUnits" Multiplicity="1" />
-          <End Role="Foods" Type="Self.Foods" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MeasureUnits">
-              <PropertyRef Name="UnitId" />
-            </Principal>
-            <Dependent Role="Foods">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MealPlanI__FoodI__0E6E26BF">
-          <End Role="Foods" Type="Self.Foods" Multiplicity="1" />
-          <End Role="MealPlanItems" Type="Self.MealPlanItems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Foods">
-              <PropertyRef Name="FoodId" />
-            </Principal>
-            <Dependent Role="MealPlanItems">
-              <PropertyRef Name="FoodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MealPlanI__MealP__0D7A0286">
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="1" />
-          <End Role="MealPlanItems" Type="Self.MealPlanItems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MealPlans">
-              <PropertyRef Name="MealPlanId" />
-            </Principal>
-            <Dependent Role="MealPlanItems">
-              <PropertyRef Name="MealPlanId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProgramDa__Progr__7F2BE32F">
           <End Role="TrainingPrograms" Type="Self.TrainingPrograms" Multiplicity="1" />
           <End Role="ProgramDays" Type="Self.ProgramDays" Multiplicity="*" />
@@ -375,7 +321,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UserProfi__GoalI__787EE5A0">
-          <End Role="Goals" Type="Self.Goals" Multiplicity="1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="0..1" />
           <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goals">
@@ -386,27 +332,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MealPlans_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="*" />
+        <Association Name="FK_Meal_Foods_Foods">
+          <End Role="Foods" Type="Self.Foods" Multiplicity="1" />
+          <End Role="Meal_Foods" Type="Self.Meal_Foods" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+            <Principal Role="Foods">
+              <PropertyRef Name="FoodId" />
             </Principal>
-            <Dependent Role="MealPlans">
-              <PropertyRef Name="ClientID" />
+            <Dependent Role="Meal_Foods">
+              <PropertyRef Name="FoodID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MealPlans_Users1">
+        <Association Name="FK_Meal_Foods_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="Meal_Foods" Type="Self.Meal_Foods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="MealId" />
+            </Principal>
+            <Dependent Role="Meal_Foods">
+              <PropertyRef Name="MealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlans_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="*" />
+          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="MealPlans">
-              <PropertyRef Name="TreinerID" />
+            <Dependent Role="Meal">
+              <PropertyRef Name="ClientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -482,15 +440,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserProfiles_Users">
+        <Association Name="FK_UserProfiles_Users1">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserProfiles">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ProfileID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -538,9 +496,8 @@
           <EntitySet Name="FoodCategories" EntityType="Self.FoodCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Foods" EntityType="Self.Foods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goals" EntityType="Self.Goals" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MealPlanItems" EntityType="Self.MealPlanItems" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MealPlans" EntityType="Self.MealPlans" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MeasureUnits" EntityType="Self.MeasureUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meal" EntityType="Self.Meal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meal_Foods" EntityType="Self.Meal_Foods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MuscleGroups" EntityType="Self.MuscleGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NutritionTargets" EntityType="Self.NutritionTargets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramDays" EntityType="Self.ProgramDays" Schema="dbo" store:Type="Tables" />
@@ -569,18 +526,6 @@
             <End Role="FoodCategories" EntitySet="FoodCategories" />
             <End Role="Foods" EntitySet="Foods" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foods__UnitId__07C12930" Association="Self.FK__Foods__UnitId__07C12930">
-            <End Role="MeasureUnits" EntitySet="MeasureUnits" />
-            <End Role="Foods" EntitySet="Foods" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MealPlanI__FoodI__0E6E26BF" Association="Self.FK__MealPlanI__FoodI__0E6E26BF">
-            <End Role="Foods" EntitySet="Foods" />
-            <End Role="MealPlanItems" EntitySet="MealPlanItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MealPlanI__MealP__0D7A0286" Association="Self.FK__MealPlanI__MealP__0D7A0286">
-            <End Role="MealPlans" EntitySet="MealPlans" />
-            <End Role="MealPlanItems" EntitySet="MealPlanItems" />
-          </AssociationSet>
           <AssociationSet Name="FK__ProgramDa__Progr__7F2BE32F" Association="Self.FK__ProgramDa__Progr__7F2BE32F">
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
             <End Role="ProgramDays" EntitySet="ProgramDays" />
@@ -601,13 +546,17 @@
             <End Role="Goals" EntitySet="Goals" />
             <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
+          <AssociationSet Name="FK_Meal_Foods_Foods" Association="Self.FK_Meal_Foods_Foods">
+            <End Role="Foods" EntitySet="Foods" />
+            <End Role="Meal_Foods" EntitySet="Meal_Foods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_Foods_Meal" Association="Self.FK_Meal_Foods_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="Meal_Foods" EntitySet="Meal_Foods" />
+          </AssociationSet>
           <AssociationSet Name="FK_MealPlans_Users" Association="Self.FK_MealPlans_Users">
             <End Role="Users" EntitySet="Users" />
-            <End Role="MealPlans" EntitySet="MealPlans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealPlans_Users1" Association="Self.FK_MealPlans_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="MealPlans" EntitySet="MealPlans" />
+            <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
           <AssociationSet Name="FK_NutritionTargets_Users" Association="Self.FK_NutritionTargets_Users">
             <End Role="Users" EntitySet="Users" />
@@ -633,7 +582,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_Users" Association="Self.FK_UserProfiles_Users">
+          <AssociationSet Name="FK_UserProfiles_Users1" Association="Self.FK_UserProfiles_Users1">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
@@ -659,9 +608,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MET" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MET" Type="Double" Nullable="false" />
           <NavigationProperty Name="UsersActivity" Relationship="Self.FK_UsersActivity_Activity" FromRole="Activity" ToRole="UsersActivity" />
         </EntityType>
         <EntityType Name="Equipment">
@@ -669,7 +618,7 @@
             <PropertyRef Name="EquipmentId" />
           </Key>
           <Property Name="EquipmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercises__Equip__7B5B524B" FromRole="Equipment" ToRole="Exercises" />
         </EntityType>
         <EntityType Name="ExerciseCategories">
@@ -677,7 +626,7 @@
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercises__Categ__797309D9" FromRole="ExerciseCategories" ToRole="Exercises" />
         </EntityType>
         <EntityType Name="Exercises">
@@ -685,13 +634,13 @@
             <PropertyRef Name="ExerciseId" />
           </Key>
           <Property Name="ExerciseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="MuscleGroupId" Type="Int32" Nullable="false" />
           <Property Name="EquipmentId" Type="Int32" Nullable="false" />
-          <Property Name="VideoUrl" Type="String" MaxLength="260" FixedLength="false" Unicode="false" />
-          <Property Name="ImagePath" Type="String" MaxLength="260" FixedLength="false" Unicode="false" />
+          <Property Name="VideoUrl" Type="String" MaxLength="260" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="260" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK__Exercises__Equip__7B5B524B" FromRole="Exercises" ToRole="Equipment" />
           <NavigationProperty Name="ExerciseCategories" Relationship="Self.FK__Exercises__Categ__797309D9" FromRole="Exercises" ToRole="ExerciseCategories" />
           <NavigationProperty Name="MuscleGroups" Relationship="Self.FK__Exercises__Muscl__7A672E12" FromRole="Exercises" ToRole="MuscleGroups" />
@@ -702,7 +651,7 @@
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Foods" Relationship="Self.FK__Foods__CategoryI__06CD04F7" FromRole="FoodCategories" ToRole="Foods" />
         </EntityType>
         <EntityType Name="Foods">
@@ -712,68 +661,51 @@
           <Property Name="FoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="Calories" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="ProteinG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FatG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="CarbsG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FiberG" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Calories" Type="Double" Nullable="false" />
+          <Property Name="ProteinG" Type="Double" Nullable="false" />
+          <Property Name="FatG" Type="Double" Nullable="false" />
+          <Property Name="CarbsG" Type="Double" Nullable="false" />
+          <Property Name="FiberG" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FoodCategories" Relationship="Self.FK__Foods__CategoryI__06CD04F7" FromRole="Foods" ToRole="FoodCategories" />
-          <NavigationProperty Name="MeasureUnits" Relationship="Self.FK__Foods__UnitId__07C12930" FromRole="Foods" ToRole="MeasureUnits" />
-          <NavigationProperty Name="MealPlanItems" Relationship="Self.FK__MealPlanI__FoodI__0E6E26BF" FromRole="Foods" ToRole="MealPlanItems" />
+          <NavigationProperty Name="Meal_Foods" Relationship="Self.FK_Meal_Foods_Foods" FromRole="Foods" ToRole="Meal_Foods" />
         </EntityType>
         <EntityType Name="Goals">
           <Key>
             <PropertyRef Name="GoalId" />
           </Key>
           <Property Name="GoalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TrainingPrograms" Relationship="Self.FK__TrainingP__GoalI__7E37BEF6" FromRole="Goals" ToRole="TrainingPrograms" />
           <NavigationProperty Name="UserProfiles" Relationship="Self.FK__UserProfi__GoalI__787EE5A0" FromRole="Goals" ToRole="UserProfiles" />
         </EntityType>
-        <EntityType Name="MealPlanItems">
+        <EntityType Name="Meal">
           <Key>
-            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="MealId" />
           </Key>
-          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MealPlanId" Type="Int32" Nullable="false" />
-          <Property Name="DayNumber" Type="Byte" Nullable="false" />
-          <Property Name="MealType" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FoodId" Type="Int32" Nullable="false" />
-          <Property Name="AmountG" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Foods" Relationship="Self.FK__MealPlanI__FoodI__0E6E26BF" FromRole="MealPlanItems" ToRole="Foods" />
-          <NavigationProperty Name="MealPlans" Relationship="Self.FK__MealPlanI__MealP__0D7A0286" FromRole="MealPlanItems" ToRole="MealPlans" />
-        </EntityType>
-        <EntityType Name="MealPlans">
-          <Key>
-            <PropertyRef Name="MealPlanId" />
-          </Key>
-          <Property Name="MealPlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MealId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ClientID" Type="Int32" Nullable="false" />
-          <Property Name="TreinerID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MealPlanItems" Relationship="Self.FK__MealPlanI__MealP__0D7A0286" FromRole="MealPlans" ToRole="MealPlanItems" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_MealPlans_Users" FromRole="MealPlans" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_MealPlans_Users1" FromRole="MealPlans" ToRole="Users" />
+          <NavigationProperty Name="Meal_Foods" Relationship="Self.FK_Meal_Foods_Meal" FromRole="Meal" ToRole="Meal_Foods" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_MealPlans_Users" FromRole="Meal" ToRole="Users" />
         </EntityType>
-        <EntityType Name="MeasureUnits">
+        <EntityType Name="Meal_Foods">
           <Key>
-            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Foods" Relationship="Self.FK__Foods__UnitId__07C12930" FromRole="MeasureUnits" ToRole="Foods" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MealID" Type="Int32" Nullable="false" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="WeightInG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Foods" Relationship="Self.FK_Meal_Foods_Foods" FromRole="Meal_Foods" ToRole="Foods" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK_Meal_Foods_Meal" FromRole="Meal_Foods" ToRole="Meal" />
         </EntityType>
         <EntityType Name="MuscleGroups">
           <Key>
             <PropertyRef Name="MuscleGroupId" />
           </Key>
           <Property Name="MuscleGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ParentId" Type="Int32" />
           <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercises__Muscl__7A672E12" FromRole="MuscleGroups" ToRole="Exercises" />
         </EntityType>
@@ -785,9 +717,9 @@
           <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ValidTo" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CaloriesTarget" Type="Int32" Nullable="false" />
-          <Property Name="ProteinTargetG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="FatTargetG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="CarbsTargetG" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ProteinTargetG" Type="Int32" Nullable="false" />
+          <Property Name="FatTargetG" Type="Int32" Nullable="false" />
+          <Property Name="CarbsTargetG" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="TrainerID" Type="Int32" />
           <NavigationProperty Name="Users" Relationship="Self.FK_NutritionTargets_Users" FromRole="NutritionTargets" ToRole="Users" />
@@ -814,8 +746,8 @@
           <Property Name="ExerciseId" Type="Int32" Nullable="false" />
           <Property Name="OrderIndex" Type="Int16" Nullable="false" />
           <Property Name="Sets" Type="Byte" Nullable="false" />
-          <Property Name="Reps" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="WeightKg" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Reps" Type="Int32" />
+          <Property Name="WeightKg" Type="Double" />
           <Property Name="RestSeconds" Type="Int16" />
           <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Exercises" Relationship="Self.FK__ProgramEx__Exerc__01142BA1" FromRole="ProgramExercises" ToRole="Exercises" />
@@ -827,12 +759,12 @@
           </Key>
           <Property Name="MeasurementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MeasuredAt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="WeightKg" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="ChestCm" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="WaistCm" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="HipsCm" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="BicepsCm" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="BodyFatPct" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="WeightKg" Type="Double" Nullable="false" />
+          <Property Name="ChestCm" Type="Double" />
+          <Property Name="WaistCm" Type="Double" />
+          <Property Name="HipsCm" Type="Double" />
+          <Property Name="BicepsCm" Type="Double" />
+          <Property Name="BodyFatPct" Type="Double" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_ProgressMeasurements_Users" FromRole="ProgressMeasurements" ToRole="Users" />
         </EntityType>
@@ -840,9 +772,9 @@
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="SleepLogs">
@@ -851,10 +783,8 @@
           </Key>
           <Property Name="SleepLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SleepDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="BedTime" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="WakeTime" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="QualityScore" Type="Byte" />
-          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QualityScore" Type="Byte" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_SleepLogs_Users" FromRole="SleepLogs" ToRole="Users" />
         </EntityType>
@@ -873,13 +803,13 @@
             <PropertyRef Name="ProgramId" />
           </Key>
           <Property Name="ProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GoalId" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="SessionsPerWeek" Type="Byte" Nullable="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="0" />
           <Property Name="ClientID" Type="Int32" Nullable="false" />
           <Property Name="TrainerID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Goals" Relationship="Self.FK__TrainingP__GoalI__7E37BEF6" FromRole="TrainingPrograms" ToRole="Goals" />
@@ -889,35 +819,32 @@
         </EntityType>
         <EntityType Name="UserProfiles">
           <Key>
-            <PropertyRef Name="ProfileId" />
+            <PropertyRef Name="ProfileID" />
           </Key>
-          <Property Name="ProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="HeightCm" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="WeightKg" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="GoalId" Type="Int32" Nullable="false" />
+          <Property Name="HeightCm" Type="Double" />
+          <Property Name="GoalId" Type="Int32" />
           <Property Name="MedicalNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Goals" Relationship="Self.FK__UserProfi__GoalI__787EE5A0" FromRole="UserProfiles" ToRole="Goals" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_UserProfiles_Users" FromRole="UserProfiles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserProfiles_Users1" FromRole="UserProfiles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="MealPlans" Relationship="Self.FK_MealPlans_Users" FromRole="Users" ToRole="MealPlans" />
-          <NavigationProperty Name="MealPlans1" Relationship="Self.FK_MealPlans_Users1" FromRole="Users" ToRole="MealPlans" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK_MealPlans_Users" FromRole="Users" ToRole="Meal" />
           <NavigationProperty Name="NutritionTargets" Relationship="Self.FK_NutritionTargets_Users" FromRole="Users" ToRole="NutritionTargets" />
           <NavigationProperty Name="NutritionTargets1" Relationship="Self.FK_NutritionTargets_Users1" FromRole="Users" ToRole="NutritionTargets" />
           <NavigationProperty Name="ProgressMeasurements" Relationship="Self.FK_ProgressMeasurements_Users" FromRole="Users" ToRole="ProgressMeasurements" />
@@ -925,14 +852,14 @@
           <NavigationProperty Name="SleepLogs" Relationship="Self.FK_SleepLogs_Users" FromRole="Users" ToRole="SleepLogs" />
           <NavigationProperty Name="TrainingPrograms" Relationship="Self.FK_TrainingPrograms_Users" FromRole="Users" ToRole="TrainingPrograms" />
           <NavigationProperty Name="TrainingPrograms1" Relationship="Self.FK_TrainingPrograms_Users1" FromRole="Users" ToRole="TrainingPrograms" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_Users" FromRole="Users" ToRole="UserProfiles" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_Users1" FromRole="Users" ToRole="UserProfiles" />
           <NavigationProperty Name="UsersActivity" Relationship="Self.FK_UsersActivity_Users" FromRole="Users" ToRole="UsersActivity" />
         </EntityType>
         <EntityType Name="UsersActivity">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="ActivityID" Type="Int32" Nullable="false" />
           <Property Name="TimeMin" Type="Int32" Nullable="false" />
@@ -1012,27 +939,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Foods__UnitId__07C12930">
-          <End Role="MeasureUnits" Type="Self.MeasureUnits" Multiplicity="1" />
-          <End Role="Foods" Type="Self.Foods" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MeasureUnits">
-              <PropertyRef Name="UnitId" />
-            </Principal>
-            <Dependent Role="Foods">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MealPlanI__FoodI__0E6E26BF">
+        <Association Name="FK_Meal_Foods_Foods">
           <End Role="Foods" Type="Self.Foods" Multiplicity="1" />
-          <End Role="MealPlanItems" Type="Self.MealPlanItems" Multiplicity="*" />
+          <End Role="Meal_Foods" Type="Self.Meal_Foods" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Foods">
               <PropertyRef Name="FoodId" />
             </Principal>
-            <Dependent Role="MealPlanItems">
-              <PropertyRef Name="FoodId" />
+            <Dependent Role="Meal_Foods">
+              <PropertyRef Name="FoodID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1049,7 +964,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UserProfi__GoalI__787EE5A0">
-          <End Role="Goals" Type="Self.Goals" Multiplicity="1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="0..1" />
           <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goals">
@@ -1060,39 +975,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MealPlanI__MealP__0D7A0286">
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="1" />
-          <End Role="MealPlanItems" Type="Self.MealPlanItems" Multiplicity="*" />
+        <Association Name="FK_Meal_Foods_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="Meal_Foods" Type="Self.Meal_Foods" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MealPlans">
-              <PropertyRef Name="MealPlanId" />
+            <Principal Role="Meal">
+              <PropertyRef Name="MealId" />
             </Principal>
-            <Dependent Role="MealPlanItems">
-              <PropertyRef Name="MealPlanId" />
+            <Dependent Role="Meal_Foods">
+              <PropertyRef Name="MealID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MealPlans_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="*" />
+          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="MealPlans">
+            <Dependent Role="Meal">
               <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MealPlans_Users1">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="MealPlans" Type="Self.MealPlans" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="MealPlans">
-              <PropertyRef Name="TreinerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1204,15 +1107,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserProfiles_Users">
+        <Association Name="FK_UserProfiles_Users1">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserProfiles">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ProfileID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1236,9 +1139,8 @@
           <EntitySet Name="FoodCategories" EntityType="Self.FoodCategories" />
           <EntitySet Name="Foods" EntityType="Self.Foods" />
           <EntitySet Name="Goals" EntityType="Self.Goals" />
-          <EntitySet Name="MealPlanItems" EntityType="Self.MealPlanItems" />
-          <EntitySet Name="MealPlans" EntityType="Self.MealPlans" />
-          <EntitySet Name="MeasureUnits" EntityType="Self.MeasureUnits" />
+          <EntitySet Name="Meal" EntityType="Self.Meal" />
+          <EntitySet Name="Meal_Foods" EntityType="Self.Meal_Foods" />
           <EntitySet Name="MuscleGroups" EntityType="Self.MuscleGroups" />
           <EntitySet Name="NutritionTargets" EntityType="Self.NutritionTargets" />
           <EntitySet Name="ProgramDays" EntityType="Self.ProgramDays" />
@@ -1275,13 +1177,9 @@
             <End Role="FoodCategories" EntitySet="FoodCategories" />
             <End Role="Foods" EntitySet="Foods" />
           </AssociationSet>
-          <AssociationSet Name="FK__Foods__UnitId__07C12930" Association="Self.FK__Foods__UnitId__07C12930">
-            <End Role="MeasureUnits" EntitySet="MeasureUnits" />
+          <AssociationSet Name="FK_Meal_Foods_Foods" Association="Self.FK_Meal_Foods_Foods">
             <End Role="Foods" EntitySet="Foods" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MealPlanI__FoodI__0E6E26BF" Association="Self.FK__MealPlanI__FoodI__0E6E26BF">
-            <End Role="Foods" EntitySet="Foods" />
-            <End Role="MealPlanItems" EntitySet="MealPlanItems" />
+            <End Role="Meal_Foods" EntitySet="Meal_Foods" />
           </AssociationSet>
           <AssociationSet Name="FK__TrainingP__GoalI__7E37BEF6" Association="Self.FK__TrainingP__GoalI__7E37BEF6">
             <End Role="Goals" EntitySet="Goals" />
@@ -1291,17 +1189,13 @@
             <End Role="Goals" EntitySet="Goals" />
             <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
-          <AssociationSet Name="FK__MealPlanI__MealP__0D7A0286" Association="Self.FK__MealPlanI__MealP__0D7A0286">
-            <End Role="MealPlans" EntitySet="MealPlans" />
-            <End Role="MealPlanItems" EntitySet="MealPlanItems" />
+          <AssociationSet Name="FK_Meal_Foods_Meal" Association="Self.FK_Meal_Foods_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="Meal_Foods" EntitySet="Meal_Foods" />
           </AssociationSet>
           <AssociationSet Name="FK_MealPlans_Users" Association="Self.FK_MealPlans_Users">
             <End Role="Users" EntitySet="Users" />
-            <End Role="MealPlans" EntitySet="MealPlans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealPlans_Users1" Association="Self.FK_MealPlans_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="MealPlans" EntitySet="MealPlans" />
+            <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
           <AssociationSet Name="FK_NutritionTargets_Users" Association="Self.FK_NutritionTargets_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1339,7 +1233,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_Users" Association="Self.FK_UserProfiles_Users">
+          <AssociationSet Name="FK_UserProfiles_Users1" Association="Self.FK_UserProfiles_Users1">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
@@ -1407,12 +1301,12 @@
                 <ScalarProperty Name="FoodId" ColumnName="FoodId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Calories" ColumnName="Calories" />
                 <ScalarProperty Name="ProteinG" ColumnName="ProteinG" />
                 <ScalarProperty Name="FatG" ColumnName="FatG" />
                 <ScalarProperty Name="CarbsG" ColumnName="CarbsG" />
                 <ScalarProperty Name="FiberG" ColumnName="FiberG" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1424,37 +1318,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MealPlanItems">
-            <EntityTypeMapping TypeName="KursModel.MealPlanItems">
-              <MappingFragment StoreEntitySet="MealPlanItems">
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="MealPlanId" ColumnName="MealPlanId" />
-                <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
-                <ScalarProperty Name="MealType" ColumnName="MealType" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="AmountG" ColumnName="AmountG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MealPlans">
-            <EntityTypeMapping TypeName="KursModel.MealPlans">
-              <MappingFragment StoreEntitySet="MealPlans">
-                <ScalarProperty Name="MealPlanId" ColumnName="MealPlanId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <EntitySetMapping Name="Meal">
+            <EntityTypeMapping TypeName="KursModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-                <ScalarProperty Name="TreinerID" ColumnName="TreinerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MeasureUnits">
-            <EntityTypeMapping TypeName="KursModel.MeasureUnits">
-              <MappingFragment StoreEntitySet="MeasureUnits">
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="Meal_Foods">
+            <EntityTypeMapping TypeName="KursModel.Meal_Foods">
+              <MappingFragment StoreEntitySet="Meal_Foods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MealID" ColumnName="MealID" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="WeightInG" ColumnName="WeightInG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1537,8 +1416,6 @@
               <MappingFragment StoreEntitySet="SleepLogs">
                 <ScalarProperty Name="SleepLogId" ColumnName="SleepLogId" />
                 <ScalarProperty Name="SleepDate" ColumnName="SleepDate" />
-                <ScalarProperty Name="BedTime" ColumnName="BedTime" />
-                <ScalarProperty Name="WakeTime" ColumnName="WakeTime" />
                 <ScalarProperty Name="QualityScore" ColumnName="QualityScore" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1575,17 +1452,15 @@
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="KursModel.UserProfiles">
               <MappingFragment StoreEntitySet="UserProfiles">
-                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="HeightCm" ColumnName="HeightCm" />
-                <ScalarProperty Name="WeightKg" ColumnName="WeightKg" />
                 <ScalarProperty Name="GoalId" ColumnName="GoalId" />
                 <ScalarProperty Name="MedicalNotes" ColumnName="MedicalNotes" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

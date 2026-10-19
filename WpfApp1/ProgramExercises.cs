@@ -19,8 +19,8 @@ namespace WpfApp1
         public int ExerciseId { get; set; }
         public short OrderIndex { get; set; }
         public byte Sets { get; set; }
-        public string Reps { get; set; }
-        public Nullable<decimal> WeightKg { get; set; }
+        public Nullable<int> Reps { get; set; }
+        public Nullable<double> WeightKg { get; set; }
         public Nullable<short> RestSeconds { get; set; }
         public string Notes { get; set; }
     

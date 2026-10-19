@@ -16,11 +16,10 @@ using WpfApp1.res;
 
 namespace WpfApp1.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для ProfilePage.xaml
-    /// </summary>
+
     public partial class ProfilePage : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         public ProfilePage()
         {
             InitializeComponent();
@@ -34,14 +33,13 @@ namespace WpfApp1.Pages
             TextBoxMN.Text = Core.profile.MedicalNotes;
             СomboBxGoal.SelectedValue = Core.profile.Goals;
             Height.Text=Core.profile.HeightCm.ToString();
-            Weight.Text = Core.profile.WeightKg.ToString();
         }
-        private void ButtonChange_Click(object sender, RoutedEventArgs e)
+        void save()
         {
-            UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u=>u.ProfileId==Core.profile.ProfileId);
+            UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u => u.ProfileID == Core.profile.ProfileID);
             if (userProfiles != null)
             {
-               List<string> list = TextBoxFIO.Text.Split(' ').ToList();
+                List<string> list = TextBoxFIO.Text.Split(' ').ToList();
                 userProfiles.FirstName = list[1];
                 userProfiles.LastName = list[0];
                 userProfiles.MiddleName = list[2];
@@ -50,10 +48,26 @@ namespace WpfApp1.Pages
                 userProfiles.BirthDate = birthday.DisplayDate;
                 Core.kursEntities.SaveChanges();
             }
-            else
+        }
+        private void ButtonChange_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Сохранить изменения?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                return;
+                save();
             }
+            else {}
+        }
+
+        private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Сохранить изменения?","Подтверждение", MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes) { 
+                save(); 
+                mainWindow.MainFrame.NavigationService.Navigate(new ChangePassPage());
+            }
+            else { mainWindow.MainFrame.NavigationService.Navigate(new ChangePassPage());}
+            
         }
     }
 }
