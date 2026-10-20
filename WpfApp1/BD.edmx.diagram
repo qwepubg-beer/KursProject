@@ -4,28 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="10b9381eb06440bca167ca781a7a8840" Name="Diagram1">
-        <EntityTypeShape EntityType="KursModel.Activity" Width="1.5" PointX="8" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Equipment" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.ExerciseCategories" Width="1.5" PointX="8.25" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Exercises" Width="1.5" PointX="10.5" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.FoodCategories" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Foods" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Goals" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Meal" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Meal_Foods" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.MuscleGroups" Width="1.5" PointX="8.25" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.NutritionTargets" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.ProgramDays" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.ProgramExercises" Width="1.5" PointX="12.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.ProgressMeasurements" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Roles" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.SleepLogs" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+      <Diagram DiagramId="652084ccbbe949188966ee57973a9ce7" Name="Diagram1">
+        <EntityTypeShape EntityType="KursModel.Activity" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Equipment" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.ExerciseCategories" Width="1.5" PointX="8.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Exercises" Width="1.5" PointX="10.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.FoodCategories" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Foods" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Goals" Width="1.5" PointX="6" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Meal" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Meal_Foods" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.MuscleGroups" Width="1.5" PointX="8.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.NutritionTargets" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.ProgramDays" Width="1.5" PointX="10.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.ProgramExercises" Width="1.5" PointX="12.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.ProgressMeasurements" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Roles" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.SleepLogs" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Styles" Width="1.5" PointX="6" PointY="24.875" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.TrainingPrograms" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.UserProfiles" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Users" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.UsersActivity" Width="1.5" PointX="10.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.TrainingPrograms" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.UserProfiles" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Users" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.UsersActivity" Width="1.5" PointX="10.25" PointY="9.5" IsExpanded="true" />
         <AssociationConnector Association="KursModel.FK_UsersActivity_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__Exercises__Equip__7B5B524B" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__Exercises__Categ__797309D9" ManuallyRouted="false" />
@@ -44,6 +45,7 @@
         <AssociationConnector Association="KursModel.FK_ProgressMeasurements_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_SleepLogs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KursModel.FK_UserProfiles_Styles" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_TrainingPrograms_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_TrainingPrograms_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_UserProfiles_Users1" ManuallyRouted="false" />
