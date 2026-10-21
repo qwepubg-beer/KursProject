@@ -18,9 +18,6 @@ using WpfApp1.res;
 
 namespace WpfApp1.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminListUser.xaml
-    /// </summary>
     public partial class AdminListUser : Page
     {
         public ObservableCollection<Users> UsersList { get; set; }

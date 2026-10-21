@@ -23,5 +23,24 @@ namespace WpfApp1.res
             user = null;
             profile = null;
         }
+        public static bool IsFirstMeasurement()
+        {
+            var m = kursEntities.ProgressMeasurements.FirstOrDefault(a=>a.UserID==user.UserId);
+            if(m!=null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public static void editProfile()
+        {
+            var prof = kursEntities.UserProfiles.Find(profile.ProfileID);
+            prof.WeightKg = kursEntities.ProgressMeasurements.AsNoTracking().First(u=>u.UserID==user.UserId).WeightKg;
+            prof.HeightCm = kursEntities.ProgressMeasurements.AsNoTracking().First(u => u.UserID == user.UserId).HeightCm;
+            kursEntities.SaveChanges();
+        }
     }
 }

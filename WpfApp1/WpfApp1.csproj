@@ -142,6 +142,9 @@
     <Compile Include="Pages\LogMealPage.xaml.cs">
       <DependentUpon>LogMealPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Measurement.xaml.cs">
+      <DependentUpon>Measurement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LogMealPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Measurement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,42 @@
+﻿<Page x:Class="WpfApp1.Pages.Measurement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Measurement">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1" Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="Save" Width="Auto" Content="Сохранить" Click="Save_Click" Grid.Column="0"/>
+            <Button Name="Add" Width="Auto" Content="Добавить" Click="Add_Click" Grid.Column="1"/>
+        </Grid>
+        <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Row="1" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Вес(кг)" Binding="{Binding WeightKg}"/>
+                <DataGridTextColumn Header="Рост(см)" Binding="{Binding HeightCm}"/>
+                <DataGridTextColumn Header="грудь(см)" Binding="{Binding ChestCm}"/>
+                <DataGridTextColumn Header="талия(см)" Binding="{Binding WaistCm}"/>
+                <DataGridTextColumn Header="бедра(см)" Binding="{Binding HipsCm}"/>
+                <DataGridTextColumn Header="бицепс(см)" Binding="{Binding BicepsCm}"/>
+                <DataGridTextColumn Header="жир(%)" Binding="{Binding BodyFatPct}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -31,7 +31,6 @@
         <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Row="1" FontSize="20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Почта" Binding="{Binding Email}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Phone}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Номер роли" Binding="{Binding RoleId}"/>
                 <DataGridTextColumn Header="Роль" Binding="{Binding Roles.Name}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}"/>
