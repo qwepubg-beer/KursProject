@@ -7,16 +7,13 @@ using System.Windows;
 
 namespace WpfApp1.Services
 {
-    internal class ThemeService
+    public interface IThemeService
     {
-        public interface IThemeService
-        {
-            void Apply(string themeName);
-        }
-
-        public class ThemeService : IThemeService
-        {
-            public void Apply(string themeName)
+        void Apply(string themeName);
+    }
+    internal class ThemeService : IThemeService
+    {
+         public void Apply(string themeName)
             {
                 if (themeName != "Light" && themeName != "Dark")
                 {
@@ -38,3 +35,4 @@ namespace WpfApp1.Services
             }
         }
 }
+

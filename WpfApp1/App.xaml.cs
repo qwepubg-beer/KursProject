@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp1.Functions;
+using WpfApp1.Services;
 namespace WpfApp1
 {
     public partial class App : Application
@@ -15,8 +16,6 @@ namespace WpfApp1
             base.OnStartup(e);
             var themeService = new ThemeService();
             themeService.Apply("Light");
-            LoginWindow loginWin = new LoginWindow();
-            loginWin.Show();
         }
     }
     }

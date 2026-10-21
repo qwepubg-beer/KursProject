@@ -47,9 +47,8 @@ namespace WpfApp1
         {
             if (IsEnter() && Core.user.IsActive) 
             {
-                var repo = new SettingsRepository();
                 var themeService = new ThemeService();
-                string savedTheme = repo.GetTheme(Core.user.Id);
+                string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
                 themeService.Apply(savedTheme);
                 switch (Core.user.RoleId)
                 { 
