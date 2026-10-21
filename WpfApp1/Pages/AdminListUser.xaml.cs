@@ -55,7 +55,6 @@ namespace WpfApp1.Pages
                             var newUser = new Users
                             {
                                 Email = user.Email,
-                                Phone = user.Phone,
                                 Password = user.Password,
                                 IsActive = user.IsActive,
                                 RoleId= ReturnRoleID(user.RoleId)
@@ -68,7 +67,6 @@ namespace WpfApp1.Pages
                             if (existingUser != null)
                             {
                                 existingUser.Email = user.Email;
-                                existingUser.Phone = user.Phone;
                                 existingUser.Password = user.Password;
                                 existingUser.IsActive = user.IsActive;
                                 existingUser.RoleId = ReturnRoleID(user.RoleId);
@@ -93,7 +91,6 @@ namespace WpfApp1.Pages
             {
                 UserId = 0,
                 Email = "",
-                Phone = "",
                 Password = "",
                 RoleId = RolesList.FirstOrDefault()?.RoleId ?? 0,
                 IsActive = true,

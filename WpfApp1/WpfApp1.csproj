@@ -109,6 +109,9 @@
     <Compile Include="Foods.cs">
       <DependentUpon>bd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Functions\Core.cs" />
+    <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\SettingsRepository.cs" />
     <Compile Include="Goals.cs">
       <DependentUpon>bd.tt</DependentUpon>
     </Compile>
@@ -157,11 +160,9 @@
     <Compile Include="ProgressMeasurements.cs">
       <DependentUpon>bd.tt</DependentUpon>
     </Compile>
-    <Compile Include="res\Functions\Function.cs" />
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="res\Functions\Core.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>bd.tt</DependentUpon>
     </Compile>

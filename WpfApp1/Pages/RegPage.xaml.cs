@@ -56,7 +56,6 @@ namespace WpfApp1.Pages
                                 IsActive = true,
                                 RoleId = roleID,
                                 CreatedAt = DateTime.Now,
-                                Phone = null
                             };
                             UserProfiles userProfiles = new UserProfiles();
                             Core.kursEntities.Users.Add(newUser);
