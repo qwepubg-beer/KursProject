@@ -12,10 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Functions;
 using WpfApp1.Pages;
 using WpfApp1.res;
 using static WpfApp1.Function;
-
+using WpfApp1.Services;
 namespace WpfApp1
 {
     /// <summary>
@@ -38,12 +39,7 @@ namespace WpfApp1
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show(
-                "Закрыть приложение?",
-                "Подтверждение",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
-
+            var result = MessageBox.Show("Закрыть приложение?","Подтверждение",MessageBoxButton.YesNo,MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
                 this.Close();
         }
@@ -51,6 +47,10 @@ namespace WpfApp1
         {
             if (IsEnter() && Core.user.IsActive) 
             {
+                var repo = new SettingsRepository();
+                var themeService = new ThemeService();
+                string savedTheme = repo.GetTheme(Core.user.Id);
+                themeService.Apply(savedTheme);
                 switch (Core.user.RoleId)
                 { 
                     case 1: User_menu.Visibility = Visibility.Visible;

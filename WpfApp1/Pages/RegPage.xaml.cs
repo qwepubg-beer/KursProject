@@ -57,9 +57,11 @@ namespace WpfApp1.Pages
                                 RoleId = roleID,
                                 CreatedAt = DateTime.Now,
                             };
-                            UserProfiles userProfiles = new UserProfiles();
+                             UserProfiles userProfiles = new UserProfiles()
+                             {
+                                StyleId = 1
+                             };
                             Core.kursEntities.Users.Add(newUser);
-                            Core.kursEntities.SaveChanges();
                             Core.kursEntities.UserProfiles.Add(userProfiles);
                             Core.kursEntities.SaveChanges();
                             return true;

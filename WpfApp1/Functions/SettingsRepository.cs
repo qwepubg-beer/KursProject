@@ -9,16 +9,16 @@ namespace WpfApp1.Functions
 {
     public class SettingsRepository
     {
-        public static string GetTheme()
+        public static string GetTheme(int userId)
         {
-            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => s.ProfileID == Core.user.UserId);
+            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => s.ProfileID == userId);
             return setting != null ? setting.Style.Name : 1;
 
         }
 
-        public static void SaveTheme(int StyleID)
+        public static void SaveTheme(int userId,int StyleID)
         {
-            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => Core.user.UserId == s.ProfileID);
+            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => userId == s.ProfileID);
             if (setting != null)
             {
                 setting.StyleId = StyleID;
