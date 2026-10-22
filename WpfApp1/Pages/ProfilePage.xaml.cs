@@ -24,6 +24,7 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
             СomboBxGoal.ItemsSource = Core.kursEntities.Goals.ToList();
+            StyleComboBox.ItemsSource = Core.kursEntities.Styles.ToList();
         }
         void LoadData()
         {
@@ -68,6 +69,11 @@ namespace WpfApp1.Pages
             }
             else { mainWindow.MainFrame.NavigationService.Navigate(new ChangePassPage());}
             
+        }
+
+        private void StyleButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

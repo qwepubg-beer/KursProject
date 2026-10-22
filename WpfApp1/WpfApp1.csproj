@@ -130,6 +130,9 @@
     <Compile Include="Pages\AdminListUser.xaml.cs">
       <DependentUpon>AdminListUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminProductPage.xaml.cs">
+      <DependentUpon>AdminProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ChangePassPage.xaml.cs">
       <DependentUpon>ChangePassPage.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <DependentUpon>bd.tt</DependentUpon>
     </Compile>
     <Page Include="Pages\AdminListUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -355,6 +362,7 @@
       <DependentUpon>bd.edmx</DependentUpon>
       <LastGenOutput>bd.cs</LastGenOutput>
     </Content>
+    <Resource Include="DO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

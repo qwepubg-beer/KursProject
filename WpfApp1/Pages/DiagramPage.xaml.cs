@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +16,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.res;
-using Microsoft.Win32;
+using static WpfApp1.Function;
 using ExcelApp = Microsoft.Office.Interop.Excel;
 using WordApp = Microsoft.Office.Interop.Word;
-using static WpfApp1.Function;
 namespace WpfApp1.Pages
 {
-    public partial class DiagramPage : Page
+    public partial class DiagramPage : System.Windows.Controls.Page
     {
         public DiagramPage()
         {
             InitializeComponent();
+            switch(TypeDiagram.SelectedIndex)
+            {
+                case 0:
+                    Diagramm1();
+                    break;
+            }
+        }
+        void Diagramm1()
+        {
             ChartArea mainArea = new ChartArea("MainArea");
             mainArea.AxisX.Title = "Дни недели";
             mainArea.AxisY.Title = "Калории (ккал)";
@@ -74,7 +84,6 @@ namespace WpfApp1.Pages
         private double GetActivityCalories(int userId, UserProfiles profile, DateTime dayStart)
         {
             if (profile.WeightKg == null) return 0;
-
             DateTime dayEnd = dayStart.AddDays(1);
             var userActivities = Core.kursEntities.UsersActivity.Where(ua => ua.UserID == userId && ua.Date >= dayStart && ua.Date < dayEnd).ToList();
             double totalActivityCalories = 0;
@@ -111,8 +120,7 @@ namespace WpfApp1.Pages
             }
             return result;
         }
-
-        private void wordButton_Click(object sender, RoutedEventArgs e)
+        void Diagram1Word()
         {
             var weeklyData = GetWeeklyData();
             if (weeklyData.Count == 0)
@@ -187,7 +195,16 @@ namespace WpfApp1.Pages
                 }
             }
         }
-        private void excelButton_Click(object sender, RoutedEventArgs e)
+        private void wordButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (TypeDiagram.SelectedIndex)
+            {
+                case 0:
+                    Diagram1Word();
+                    break;
+            }
+        }
+        void Diagram1Excel()
         {
             var weeklyData = GetWeeklyData();
             if (weeklyData.Count == 0)
@@ -255,6 +272,15 @@ namespace WpfApp1.Pages
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
                 }
+            }
+        }
+        private void excelButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (TypeDiagram.SelectedIndex)
+            {
+                case 0:
+                    Diagram1Excel();
+                    break;
             }
         }
 

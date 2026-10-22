@@ -54,8 +54,10 @@
             </ComboBox>
             <DatePicker Name="birthday" Grid.Column="1" Margin="5" Grid.Row="1"></DatePicker>
             <ComboBox x:Name="СomboBxGoal" Grid.Column="1" ToolTip="Выберите цель" Grid.Row="6" Margin="5" DisplayMemberPath="Name" SelectedValuePath="GoalId"/>
-            <Button x:Name="ButtonChange" Height="34" Content="Изменить"  Width="150" Margin="5" Grid.Row="8" Grid.ColumnSpan="2" Click="ButtonChange_Click"></Button>
-            <Button x:Name="ButtonChangePass" Height="34" Content="Изменить пароль"  Width="150" Margin="5" Grid.Row="9" Grid.ColumnSpan="2" Click="ButtonChangePass_Click"></Button>
+            <Button x:Name="ButtonChange" Height="34" Content="Изменить"  Width="150" Margin="5" Grid.Row="8" Grid.Column="1" Click="ButtonChange_Click"></Button>
+            <Button x:Name="ButtonChangePass" Height="34" Content="Изменить пароль"  Width="150" Margin="5" Grid.Row="9" Grid.Column="1"  Click="ButtonChangePass_Click"></Button>
+            <Button x:Name="StyleButton" Height="34" Content="Изменить тему"  Width="150" Margin="5" Grid.Row="9" Grid.Column="0"  Click="StyleButton_Click"></Button>
+            <ComboBox x:Name="StyleComboBox" IsEditable="True" DisplayMemberPath="Name" SelectedValuePath="Id" Grid.Row="8" Grid.Column="0" Margin="5"></ComboBox>
         </Grid>
     </Grid>
 </Page>

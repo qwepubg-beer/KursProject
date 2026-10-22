@@ -87,5 +87,28 @@ namespace WpfApp1
         {
             MainFrame.NavigationService.Navigate(new RecordsPage());
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            switch (Core.user.RoleId)
+            {
+                case 1:
+                    User_menu.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    Admin_menu.Visibility = Visibility.Collapsed;
+                    break;
+            }
+            Core.Clear();
+            MainFrame.NavigationService.Navigate(new AuthPage());
+
+        }
+
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AdminProductPage());
+        }
     }
 }

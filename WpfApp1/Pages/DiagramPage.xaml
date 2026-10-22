@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DiagramPage">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -29,7 +28,7 @@
         </WindowsFormsHost>
         <Label Content="Тип диаграммы: " HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
         <ComboBox Name="TypeDiagram" Margin="10" Grid.Column="1">
-            <ComboBoxItem Content=""></ComboBoxItem>
+            <ComboBoxItem Content="Приход расход калорий"></ComboBoxItem>
         </ComboBox>
         <Button Name="wordButton" Content="Word" Grid.Column="3" Margin="10" Click="wordButton_Click"></Button>
         <Button Name="excelButton" Content="Excel" Grid.Column="2" Margin="10" Click="excelButton_Click"></Button>
