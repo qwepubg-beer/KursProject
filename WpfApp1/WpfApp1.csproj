@@ -359,6 +359,7 @@
       <DependentUpon>base.edmx</DependentUpon>
       <LastGenOutput>base.cs</LastGenOutput>
     </Content>
+    <Content Include="db\script.sql" />
     <Content Include="db\up01.sql" />
     <Resource Include="DO.txt" />
   </ItemGroup>
