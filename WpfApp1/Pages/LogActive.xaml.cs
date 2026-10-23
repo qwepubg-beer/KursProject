@@ -23,7 +23,7 @@ namespace WpfApp1.Pages
     public partial class LogActive : Page
     {
         ObservableCollection<Activity> ActivityList { get; set; }
-        Foods food = null;
+        Activity activity = null;
         public LogActive()
         {
             InitializeComponent();
@@ -50,16 +50,30 @@ namespace WpfApp1.Pages
         {
             if (ActivityListBox.SelectedItem != null)
             {
-                food = (Foods)ActivityListBox.SelectedItem;
-                ChoosingActivty.Text = "Выбрано: " + food.Name;
+                activity = ActivityListBox.SelectedItem as Activity;
+                ChoosingActivty.Text = "Выбрано: " + activity.Name;
             }
         }
 
         private void RecordBtn_Click(object sender, RoutedEventArgs e)
         {
-            //записать в таблицу
+            if (int.TryParse(Quantity.Text, out int Q))
+            {
+                UsersActivity newUsActv = new UsersActivity()
+                {
+                    UserID = Core.user.UserId,
+                    ActivityID = activity.Id,
+                    TimeMin = Q,
+                    Date = DateTime.Now
+                };
+                Core.kursEntities.UsersActivity.Add(newUsActv);
+                Core.kursEntities.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Неверный формат колличества минут!");
+            }
         }
-
         private void SortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (SortComboBox.SelectedIndex)

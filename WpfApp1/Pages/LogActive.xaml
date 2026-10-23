@@ -45,7 +45,7 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name="SortComboBox" Grid.Column="2" IsEditable="True" Margin="5">
+        <ComboBox x:Name="SortComboBox" ToolTip="сортировка по расходу" Grid.Column="2" IsEditable="True" Margin="5">
             <ComboBoxItem Content="По расходу возрастание"></ComboBoxItem>
             <ComboBoxItem Content="По расходу убывание"></ComboBoxItem>
         </ComboBox>

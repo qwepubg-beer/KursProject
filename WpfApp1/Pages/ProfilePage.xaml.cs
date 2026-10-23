@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Functions;
 using WpfApp1.res;
+using WpfApp1.Services;
 
 namespace WpfApp1.Pages
 {
@@ -73,7 +75,15 @@ namespace WpfApp1.Pages
 
         private void StyleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(StyleComboBox.SelectedItem!=null)
+            {
+                Styles g = StyleComboBox.SelectedItem as Styles;
+                var themeService = new ThemeService();
+                SettingsRepository.SaveTheme(Core.user.UserId, g.id);
+                string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
+                themeService.Apply(savedTheme);
+            }
+            else {MessageBox.Show("Выбирите тему!");}
         }
     }
 }

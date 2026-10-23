@@ -35,19 +35,19 @@ namespace WpfApp1.Pages
         }
         void Diagramm1()
         {
-            ChartArea mainArea = new ChartArea("MainArea");
+            System.Windows.Forms.DataVisualization.Charting.ChartArea mainArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea("MainArea");
             mainArea.AxisX.Title = "Дни недели";
             mainArea.AxisY.Title = "Калории (ккал)";
             mainArea.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             mainArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             ChartEnergyBalance.ChartAreas.Add(mainArea);
-            var intakeSeries = new Series("Приход калорий")
+            var intakeSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Приход калорий")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
                 Color = System.Drawing.Color.MediumSeaGreen
             };
-            var expenditureSeries = new Series("Расход калорий")
+            var expenditureSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Расход калорий")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,

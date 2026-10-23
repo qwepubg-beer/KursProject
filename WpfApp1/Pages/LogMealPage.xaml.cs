@@ -24,6 +24,7 @@ namespace WpfApp1.Pages
     {
         ObservableCollection<Foods> FoodList { get; set; }
         Foods food=null;
+        Meal newMeal = null;
         public LogMealPage()
         {
             InitializeComponent();
@@ -56,10 +57,47 @@ namespace WpfApp1.Pages
                 ChoosingProduct.Text = "Выбрано: "+food.Name;
             }
         }
-
+        void CreateMeal()
+        {
+            Meal meal = new Meal()
+            {
+                ClientID = Core.user.UserId,
+                Date =DateTime.Now
+            };
+            Core.kursEntities.Meal.Add(meal);
+            Core.kursEntities.SaveChanges();
+            newMeal=Core.kursEntities.Meal.First(a=> a.ClientID == meal.ClientID);
+        }
+        void CreateMealFood()
+        {
+            if (int.TryParse(Quantity.Text, out int Q))
+            {
+                Meal_Foods mealfood = new Meal_Foods()
+                {
+                    MealID = newMeal.MealId,
+                    FoodID = food.FoodId,
+                    WeightInG = Q
+                };
+                Core.kursEntities.Meal_Foods.Add(mealfood);
+                Core.kursEntities.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Неверный формат колличества грамм!");
+            }
+        }
         private void RecordBtn_Click(object sender, RoutedEventArgs e)
         {
-            //записать в таблицу
+            if(newMeal==null)
+            {
+                CreateMeal();
+                CreateMealFood();
+            }
+            else
+            {
+                CreateMealFood();
+            }
+
         }
         private void TypeProductComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

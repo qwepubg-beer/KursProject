@@ -34,5 +34,10 @@ namespace WpfApp1.Pages
         {
             RecordFrame.NavigationService.Navigate(new LogActive());
         }
+
+        private void MeasButton_Click(object sender, RoutedEventArgs e)
+        {
+            RecordFrame.NavigationService.Navigate(new Measurement());
+        }
     }
 }

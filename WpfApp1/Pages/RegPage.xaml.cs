@@ -31,7 +31,7 @@ namespace WpfApp1.Pages
         {
             comboBxRole.SelectedIndex = 0;
         }
-        bool Registration(string mail, string pas1, string pas2,int roleID=1)
+        bool Registration(string mail, string pas1, string pas2,int RoleID)
         {
             if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(pas1) || string.IsNullOrEmpty(pas2))
             {
@@ -49,23 +49,25 @@ namespace WpfApp1.Pages
                         Users user = Core.kursEntities.Users.FirstOrDefault(a => a.Email == mail);
                         if (user is null)
                         {
-                            Users newUser = new Users()
-                            {
-                                Email = mail,
-                                Password = GetHash(pas1),
-                                IsActive = true,
-                                RoleId = roleID,
-                                CreatedAt = DateTime.Now,
-                            };
-                             UserProfiles userProfiles = new UserProfiles()
-                             {
-                                StyleId = 1
-                             };
-                            Core.kursEntities.Users.Add(newUser);
-                            Core.kursEntities.UserProfiles.Add(userProfiles);
-                            Core.kursEntities.SaveChanges();
-                            return true;
-                        }
+                                Users newUser = new Users()
+                                {
+                                    Email = mail,
+                                    Password = GetHash(pas1),
+                                    IsActive = true,
+                                    RoleId = RoleID,
+                                    CreatedAt = DateTime.Now
+                                };
+                                Core.kursEntities.Users.Add(newUser);
+                                Core.kursEntities.SaveChanges();
+                                UserProfiles userProfiles = new UserProfiles()
+                                {
+                                    ProfileID = newUser.UserId,
+                                    StyleId = 1
+                                };
+                                Core.kursEntities.UserProfiles.Add(userProfiles);
+                                Core.kursEntities.SaveChanges();
+                                return true;
+                            }
                         else
                         {
                             MessageBox.Show("Пользователь уже зарегистрирован!");
@@ -125,20 +127,17 @@ namespace WpfApp1.Pages
 
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
-            if(comboBxRole.SelectedIndex == -1)
+            if(comboBxRole.SelectedItem !=null)
             {
-                    if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password))
-                    {
-                        MessageBox.Show("Вы зарегистрированы!");
-                        mainWindow.MainFrame.NavigationService.Navigate(new AuthPage());
-                    }
-            }
-            else{
-                if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password,comboBxRole.SelectedIndex))
+                if (Registration(TextBoxEmail.Text, PasswordBox.Password, PasswordBox2.Password, comboBxRole.SelectedIndex==0?1:2))
                 {
                     MessageBox.Show("Вы зарегистрированы!");
                     mainWindow.MainFrame.NavigationService.Navigate(new AuthPage());
                 }
+            }
+            else
+            {
+
             }
             
         }
