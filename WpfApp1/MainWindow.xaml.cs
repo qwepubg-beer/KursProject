@@ -28,8 +28,22 @@ namespace WpfApp1
         {
             InitializeComponent();
             MainFrame.NavigationService.Navigate(new AuthPage());
+            MainFrame.Navigating += MainFrame_Navigating;
         }
-
+        private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (MainFrame.Content is ITrackChanges currentPage)
+            {
+                if (currentPage.HasUnsavedChanges())
+                {
+                    var result = MessageBox.Show("У вас есть несохраненные изменения! Вы уверены, что хотите покинуть страницу? Все несохраненные данные будут потеряны.", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             if(MainFrame.NavigationService.CanGoBack)
@@ -62,7 +76,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void Account_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new ProfilePage());
@@ -80,7 +93,7 @@ namespace WpfApp1
 
         private void Measurement_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.NavigationService.Navigate(new AuthPage());
+            MainFrame.NavigationService.Navigate(new Measurement());
         }
 
         private void Records_Click(object sender, RoutedEventArgs e)
@@ -105,7 +118,6 @@ namespace WpfApp1
             MainFrame.NavigationService.Navigate(new AuthPage());
 
         }
-
         private void Products_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new AdminProductPage());

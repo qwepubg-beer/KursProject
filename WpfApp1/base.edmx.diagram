@@ -26,7 +26,6 @@
         <EntityTypeShape EntityType="KursModel.TrainingPrograms" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.Users" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.UsersActivity" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.UserProfiles" Width="1.5" PointX="10.25" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="KursModel.FK_UsersActivity_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__Exercises__Equip__7B5B524B" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__Exercises__Categ__797309D9" ManuallyRouted="false" />
@@ -35,7 +34,6 @@
         <AssociationConnector Association="KursModel.FK__Foods__CategoryI__06CD04F7" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_Meal_Foods_Foods" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK__TrainingP__GoalI__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="KursModel.FK__UserProfi__GoalI__787EE5A0" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_Meal_Foods_Meal" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_MealPlans_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_NutritionTargets_Users" ManuallyRouted="false" />
@@ -45,11 +43,13 @@
         <AssociationConnector Association="KursModel.FK_ProgressMeasurements_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_SleepLogs_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="KursModel.FK_UserProfiles_Styles" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_TrainingPrograms_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_TrainingPrograms_Users1" ManuallyRouted="false" />
-        <AssociationConnector Association="KursModel.FK_UserProfiles_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KursModel.FK_UsersActivity_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KursModel.UserProfiles" Width="1.5" PointX="10.25" PointY="8" />
+        <AssociationConnector Association="KursModel.FK__UserProfi__GoalI__787EE5A0" />
+        <AssociationConnector Association="KursModel.FK_UserProfiles_Styles" />
+        <AssociationConnector Association="KursModel.FK_UserProfiles_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

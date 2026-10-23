@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Functions;
 using WpfApp1.res;
 
 namespace WpfApp1.Pages
@@ -20,30 +21,44 @@ namespace WpfApp1.Pages
     /// <summary>
     /// Логика взаимодействия для AdminProductPage.xaml
     /// </summary>
-    public partial class AdminProductPage : Page
+    public partial class AdminProductPage : Page,ITrackChanges
     {
         public ObservableCollection<Foods> FoodList { get; set; }
         public List<FoodCategories> TypeFoodList { get; set; }
+        private bool _isDirty = false;
         public AdminProductPage()
         {
             InitializeComponent();
             LoadData();
             DataContext = this;
+            ProductDataGrid.CellEditEnding += ProductDataGrid_CellEditEnding;
         }
         private void LoadData()
         {
             TypeFoodList = Core.kursEntities.FoodCategories.ToList();
             FoodList = new ObservableCollection<Foods>(Core.kursEntities.Foods.ToList());
-            UserDataGrid.ItemsSource = FoodList;
+            ProductDataGrid.ItemsSource = FoodList;
+            _isDirty = false;
+        }
+        public bool HasUnsavedChanges()
+        {
+            return _isDirty;
+        }
+        private void ProductDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                _isDirty = true;
+            }
         }
         public int ReturnCategoryID(int id)
         {
-            FoodCategories foodCategory = Core.kursEntities.FoodCategories.Find(id);
+            FoodCategories foodCategory = TypeFoodList.FirstOrDefault(r => r.CategoryId == id);
             return foodCategory != null ? foodCategory.CategoryId : 1;
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            UserDataGrid.CommitEdit();
+            ProductDataGrid.CommitEdit();
             var result = MessageBox.Show("Сохранить все изменения?", "Подтверждение",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -112,8 +127,8 @@ namespace WpfApp1.Pages
 
             };
             FoodList.Add(newFood);
-            UserDataGrid.SelectedItem = newFood;
-            UserDataGrid.ScrollIntoView(newFood);
+            ProductDataGrid.SelectedItem = newFood;
+            ProductDataGrid.ScrollIntoView(newFood);
         }
     }
 }

@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Functions\Core.cs" />
     <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\ITrackChanges.cs" />
     <Compile Include="Functions\SettingsRepository.cs" />
     <Compile Include="Goals.cs">
       <DependentUpon>base.tt</DependentUpon>

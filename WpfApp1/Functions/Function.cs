@@ -64,7 +64,7 @@ namespace WpfApp1
         }
         static public double BMR(UserProfiles profile)
     {
-            if (profile.WeightKg != null && profile.HeightCm != null)
+            if (profile.WeightKg != null && profile.HeightCm != null && profile.BirthDate!=null)
             {
                 if (profile.Gender == "м") 
                 {

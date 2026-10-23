@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище KursModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище KursModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Id" />
@@ -52,7 +52,7 @@
             <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="FoodId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="Calories" Type="float" Nullable="false" />
           <Property Name="ProteinG" Type="float" Nullable="false" />
@@ -196,18 +196,15 @@
           <Property Name="ClientID" Type="int" Nullable="false" />
           <Property Name="TrainerID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Kurs.dbo.UserProfiles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="UserProfiles">
           <Key>
-            <PropertyRef Name="StyleId" />
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
           <Property Name="LastName" Type="nvarchar" MaxLength="64" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="64" />
           <Property Name="BirthDate" Type="date" />
-          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
           <Property Name="HeightCm" Type="float" />
           <Property Name="GoalId" Type="int" />
           <Property Name="MedicalNotes" Type="nvarchar(max)" />
@@ -467,7 +464,7 @@
         </Association>
         <Association Name="FK_UserProfiles_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
@@ -533,24 +530,9 @@
           <EntitySet Name="Styles" EntityType="Self.Styles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrainingPrograms" EntityType="Self.TrainingPrograms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersActivity" EntityType="Self.UsersActivity" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserProfiles].[FirstName] AS [FirstName], 
-    [UserProfiles].[LastName] AS [LastName], 
-    [UserProfiles].[MiddleName] AS [MiddleName], 
-    [UserProfiles].[BirthDate] AS [BirthDate], 
-    [UserProfiles].[Gender] AS [Gender], 
-    [UserProfiles].[HeightCm] AS [HeightCm], 
-    [UserProfiles].[GoalId] AS [GoalId], 
-    [UserProfiles].[MedicalNotes] AS [MedicalNotes], 
-    [UserProfiles].[Phone] AS [Phone], 
-    [UserProfiles].[WeightKg] AS [WeightKg], 
-    [UserProfiles].[StyleId] AS [StyleId], 
-    [UserProfiles].[UserID] AS [UserID]
-    FROM [dbo].[UserProfiles] AS [UserProfiles]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Exercises__Categ__797309D9" Association="Self.FK__Exercises__Categ__797309D9">
             <End Role="ExerciseCategories" EntitySet="ExerciseCategories" />
             <End Role="Exercises" EntitySet="Exercises" />
@@ -644,8 +626,7 @@
             <End Role="UsersActivity" EntitySet="UsersActivity" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KursModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -704,7 +685,7 @@
             <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="FoodId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="Calories" Type="Double" Nullable="false" />
           <Property Name="ProteinG" Type="Double" Nullable="false" />
@@ -722,7 +703,7 @@
           <Property Name="GoalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TrainingPrograms" Relationship="Self.FK__TrainingP__GoalI__7E37BEF6" FromRole="Goals" ToRole="TrainingPrograms" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK__UserProfi__GoalI__787EE5A0" FromRole="Goals" ToRole="UserProfiles" />
+          <NavigationProperty Name="UserProfiles" Relationship="KursModel.FK__UserProfi__GoalI__787EE5A0" FromRole="Goals" ToRole="UserProfiles" />
         </EntityType>
         <EntityType Name="Meal">
           <Key>
@@ -840,7 +821,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_Styles" FromRole="Styles" ToRole="UserProfiles" />
+          <NavigationProperty Name="UserProfiles" Relationship="KursModel.FK_UserProfiles_Styles" FromRole="Styles" ToRole="UserProfiles" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -889,8 +870,8 @@
           <NavigationProperty Name="SleepLogs" Relationship="Self.FK_SleepLogs_Users" FromRole="Users" ToRole="SleepLogs" />
           <NavigationProperty Name="TrainingPrograms" Relationship="Self.FK_TrainingPrograms_Users" FromRole="Users" ToRole="TrainingPrograms" />
           <NavigationProperty Name="TrainingPrograms1" Relationship="Self.FK_TrainingPrograms_Users1" FromRole="Users" ToRole="TrainingPrograms" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_Users" FromRole="Users" ToRole="UserProfiles" />
           <NavigationProperty Name="UsersActivity" Relationship="Self.FK_UsersActivity_Users" FromRole="Users" ToRole="UsersActivity" />
+          <NavigationProperty Name="UserProfiles" Relationship="KursModel.FK_UserProfiles_Users" FromRole="Users" ToRole="UserProfiles" />
         </EntityType>
         <EntityType Name="UsersActivity">
           <Key>
@@ -903,27 +884,6 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_UsersActivity_Activity" FromRole="UsersActivity" ToRole="Activity" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UsersActivity_Users" FromRole="UsersActivity" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="UserProfiles">
-          <Key>
-            <PropertyRef Name="StyleId" />
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="HeightCm" Type="Double" />
-          <Property Name="GoalId" Type="Int32" />
-          <Property Name="MedicalNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WeightKg" Type="Double" />
-          <Property Name="StyleId" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Goals" Relationship="Self.FK__UserProfi__GoalI__787EE5A0" FromRole="UserProfiles" ToRole="Goals" />
-          <NavigationProperty Name="Styles" Relationship="Self.FK_UserProfiles_Styles" FromRole="UserProfiles" ToRole="Styles" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_UserProfiles_Users" FromRole="UserProfiles" ToRole="Users" />
         </EntityType>
         <Association Name="FK_UsersActivity_Activity">
           <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
@@ -1017,18 +977,6 @@
               <PropertyRef Name="GoalId" />
             </Principal>
             <Dependent Role="TrainingPrograms">
-              <PropertyRef Name="GoalId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserProfi__GoalI__787EE5A0">
-          <End Role="Goals" Type="Self.Goals" Multiplicity="0..1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goals">
-              <PropertyRef Name="GoalId" />
-            </Principal>
-            <Dependent Role="UserProfiles">
               <PropertyRef Name="GoalId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1141,18 +1089,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserProfiles_Styles">
-          <End Role="Styles" Type="Self.Styles" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Styles">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="StyleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TrainingPrograms_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="TrainingPrograms" Type="Self.TrainingPrograms" Multiplicity="*" />
@@ -1174,18 +1110,6 @@
             </Principal>
             <Dependent Role="TrainingPrograms">
               <PropertyRef Name="TrainerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfiles_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1223,7 +1147,6 @@
           <EntitySet Name="TrainingPrograms" EntityType="Self.TrainingPrograms" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UsersActivity" EntityType="Self.UsersActivity" />
-          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" />
           <AssociationSet Name="FK_UsersActivity_Activity" Association="Self.FK_UsersActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="UsersActivity" EntitySet="UsersActivity" />
@@ -1255,10 +1178,6 @@
           <AssociationSet Name="FK__TrainingP__GoalI__7E37BEF6" Association="Self.FK__TrainingP__GoalI__7E37BEF6">
             <End Role="Goals" EntitySet="Goals" />
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserProfi__GoalI__787EE5A0" Association="Self.FK__UserProfi__GoalI__787EE5A0">
-            <End Role="Goals" EntitySet="Goals" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
           <AssociationSet Name="FK_Meal_Foods_Meal" Association="Self.FK_Meal_Foods_Meal">
             <End Role="Meal" EntitySet="Meal" />
@@ -1296,10 +1215,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="SleepLogs" EntitySet="SleepLogs" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_Styles" Association="Self.FK_UserProfiles_Styles">
-            <End Role="Styles" EntitySet="Styles" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
           <AssociationSet Name="FK_TrainingPrograms_Users" Association="Self.FK_TrainingPrograms_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
@@ -1308,15 +1223,80 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="TrainingPrograms" EntitySet="TrainingPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_Users" Association="Self.FK_UserProfiles_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
           <AssociationSet Name="FK_UsersActivity_Users" Association="Self.FK_UsersActivity_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersActivity" EntitySet="UsersActivity" />
           </AssociationSet>
+          <EntitySet Name="UserProfiles" EntityType="KursModel.UserProfiles" />
+          <AssociationSet Name="FK__UserProfi__GoalI__787EE5A0" Association="KursModel.FK__UserProfi__GoalI__787EE5A0">
+            <End Role="Goals" EntitySet="Goals" />
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfiles_Styles" Association="KursModel.FK_UserProfiles_Styles">
+            <End Role="Styles" EntitySet="Styles" />
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfiles_Users" Association="KursModel.FK_UserProfiles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UserProfiles">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="HeightCm" Type="Double" />
+          <Property Name="GoalId" Type="Int32" />
+          <Property Name="MedicalNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WeightKg" Type="Double" />
+          <Property Name="StyleId" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Goals" Relationship="KursModel.FK__UserProfi__GoalI__787EE5A0" FromRole="UserProfiles" ToRole="Goals" />
+          <NavigationProperty Name="Styles" Relationship="KursModel.FK_UserProfiles_Styles" FromRole="UserProfiles" ToRole="Styles" />
+          <NavigationProperty Name="Users" Relationship="KursModel.FK_UserProfiles_Users" FromRole="UserProfiles" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__UserProfi__GoalI__787EE5A0">
+          <End Type="KursModel.Goals" Role="Goals" Multiplicity="0..1" />
+          <End Type="KursModel.UserProfiles" Role="UserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goals">
+              <PropertyRef Name="GoalId" />
+            </Principal>
+            <Dependent Role="UserProfiles">
+              <PropertyRef Name="GoalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfiles_Styles">
+          <End Type="KursModel.Styles" Role="Styles" Multiplicity="1" />
+          <End Type="KursModel.UserProfiles" Role="UserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Styles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserProfiles">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfiles_Users">
+          <End Type="KursModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="KursModel.UserProfiles" Role="UserProfiles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserProfiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1559,18 +1539,18 @@
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="KursModel.UserProfiles">
               <MappingFragment StoreEntitySet="UserProfiles">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="HeightCm" ColumnName="HeightCm" />
-                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
-                <ScalarProperty Name="MedicalNotes" ColumnName="MedicalNotes" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="WeightKg" ColumnName="WeightKg" />
-                <ScalarProperty Name="StyleId" ColumnName="StyleId" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="StyleId" ColumnName="StyleId" />
+                <ScalarProperty Name="WeightKg" ColumnName="WeightKg" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MedicalNotes" ColumnName="MedicalNotes" />
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+                <ScalarProperty Name="HeightCm" ColumnName="HeightCm" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

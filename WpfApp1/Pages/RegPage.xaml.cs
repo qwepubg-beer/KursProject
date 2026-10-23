@@ -47,8 +47,8 @@ namespace WpfApp1.Pages
                         if(IsValidEmail(mail))
                         {
                         Users user = Core.kursEntities.Users.FirstOrDefault(a => a.Email == mail);
-                        if (user is null)
-                        {
+                            if (user is null)
+                            {
                                 Users newUser = new Users()
                                 {
                                     Email = mail,
@@ -57,19 +57,18 @@ namespace WpfApp1.Pages
                                     RoleId = RoleID,
                                     CreatedAt = DateTime.Now
                                 };
-                                Core.kursEntities.Users.Add(newUser);
-                                Core.kursEntities.SaveChanges();
                                 UserProfiles userProfiles = new UserProfiles()
                                 {
-                                    UserID = newUser.UserId,
                                     StyleId = 1
                                 };
-                                Core.kursEntities.UserProfiles.Add(userProfiles);
+                                newUser.UserProfiles=(userProfiles);
+                                Core.kursEntities.Users.Add(newUser);
                                 Core.kursEntities.SaveChanges();
                                 return true;
                             }
-                        else
-                        {
+
+                            else
+                            {
                             MessageBox.Show("Пользователь уже зарегистрирован!");
                             return false;
                         }

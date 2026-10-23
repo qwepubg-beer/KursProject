@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Functions;
 using WpfApp1.res;
 using static WpfApp1.Function;
 namespace WpfApp1.Pages
@@ -27,7 +28,6 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
         }
-
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
 
@@ -55,7 +55,6 @@ namespace WpfApp1.Pages
                 }
                 else
                 {
-                    MessageBox.Show("Пользователь успешно найден!");
                     Core.user= user;
                     Core.SelectProfile();
                     mainWindow.LoadDate();
