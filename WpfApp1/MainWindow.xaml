@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -29,21 +29,21 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Name="Account" Click="Account_Click" Grid.Row="0"></Button>
-            <Button Name="Records" Click="Records_Click" Grid.Row="1"></Button>
-            <Button Name="Measurement" Click="Measurement_Click" Grid.Row="2"></Button>
-            <Button Name="Diagrams" Click="Diagrams_Click" Grid.Row="3"></Button>
+            <Button Name="Account" Click="Account_Click" Grid.Row="0" Margin="2"></Button>
+            <Button Name="Records" Click="Records_Click" Grid.Row="1" Margin="2"></Button>
+            <Button Name="Measurement" Click="Measurement_Click" Grid.Row="2" Margin="2"></Button>
+            <Button Name="Diagrams" Click="Diagrams_Click" Grid.Row="3" Margin="2"></Button>
         </Grid>
         <Grid Name="Admin_menu" Grid.Row="1" Grid.RowSpan="2" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Name="Products" Click="Products_Click" Grid.Row="0"></Button>
-            <Button Name="Users" Click="Users_Click" Grid.Row="1"></Button>
+            <Button Name="Products" Click="Products_Click" Grid.Row="0" Margin="2"></Button>
+            <Button Name="Users" Click="Users_Click" Grid.Row="1" Margin="2"></Button>
         </Grid>
         <Button Name="Back" Click="Back_Click"> </Button>
-        <Button Name="Logout" Grid.Row="6" Click="Logout_Click" ></Button>
-        <Button Name="Exit" Grid.Row="7"  Click="CloseButton_Click"></Button>
+        <Button Name="Logout" Grid.Row="6" Click="Logout_Click" Margin="2"></Button>
+        <Button Name="Exit" Grid.Row="7"  Click="CloseButton_Click" Margin="2"></Button>
     </Grid>
 </Window>

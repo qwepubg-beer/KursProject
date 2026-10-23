@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,7 @@ using WpfApp1.res;
 using static WpfApp1.Function;
 //using ExcelApp = Microsoft.Office.Interop.Excel;
 using WordApp = Microsoft.Office.Interop.Word;
+
 namespace WpfApp1.Pages
 {
     public partial class DiagramPage : System.Windows.Controls.Page
@@ -17,13 +17,15 @@ namespace WpfApp1.Pages
         public DiagramPage()
         {
             InitializeComponent();
-
             TypeDiagram.SelectionChanged += TypeDiagram_SelectionChanged;
             Loaded += DiagramPage_Loaded;
         }
 
         private void DiagramPage_Loaded(object sender, RoutedEventArgs e)
         {
+            if (TypeDiagram.SelectedIndex < 0)
+                TypeDiagram.SelectedIndex = 0;
+
             UpdateDiagram();
         }
 
@@ -45,31 +47,34 @@ namespace WpfApp1.Pages
                     break;
             }
         }
-
         void Diagramm1()
         {
             ChartEnergyBalance.ChartAreas.Clear();
             ChartEnergyBalance.Series.Clear();
 
-            ChartArea mainArea = new ChartArea("MainArea");
-            mainArea.AxisX.Title = "Дни недели";
-            mainArea.AxisY.Title = "Калории (ккал)";
-            mainArea.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            mainArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            ChartEnergyBalance.ChartAreas.Add(mainArea);
+            var area = new ChartArea("MainArea");
+            area.AxisX.Title = "День";
+            area.AxisY.Title = "Калории (ккал)";
+            area.AxisX.Interval = 1;
+            area.AxisY.IsStartedFromZero = true;
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            ChartEnergyBalance.ChartAreas.Add(area);
 
-            var intakeSeries = new Series("Приход калорий")
+            var intakeSeries = new Series("Приход")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = System.Drawing.Color.MediumSeaGreen
+                Color = System.Drawing.Color.MediumSeaGreen,
+                LabelFormat = "0"
             };
 
-            var expenditureSeries = new Series("Расход калорий")
+            var expenditureSeries = new Series("Расход")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = System.Drawing.Color.Crimson
+                Color = System.Drawing.Color.Crimson,
+                LabelFormat = "0"
             };
 
             ChartEnergyBalance.Series.Add(intakeSeries);
@@ -77,11 +82,13 @@ namespace WpfApp1.Pages
 
             LoadEnergyData();
         }
-
-        private void LoadEnergyData()
+       private void LoadEnergyData()
         {
-            var intakeSeries = ChartEnergyBalance.Series["Приход калорий"];
-            var expenditureSeries = ChartEnergyBalance.Series["Расход калорий"];
+            if (ChartEnergyBalance.Series.Count < 2)
+                return;
+
+            var intakeSeries = ChartEnergyBalance.Series["Приход"];
+            var expenditureSeries = ChartEnergyBalance.Series["Расход"];
 
             intakeSeries.Points.Clear();
             expenditureSeries.Points.Clear();
@@ -116,18 +123,17 @@ namespace WpfApp1.Pages
                 .Where(ua => ua.UserID == userId && ua.Date >= dayStart && ua.Date < dayEnd)
                 .ToList();
 
-            double totalActivityCalories = 0;
-
+            double total = 0;
             foreach (var ua in userActivities)
             {
                 if (ua.Activity != null)
                 {
-                    double timeInHours = ua.TimeMin / 60.0;
-                    totalActivityCalories += ua.Activity.MET * profile.WeightKg.Value * timeInHours;
+                    double hours = ua.TimeMin / 60.0;
+                    total += ua.Activity.MET * profile.WeightKg.Value * hours;
                 }
             }
 
-            return totalActivityCalories;
+            return total;
         }
 
         private List<(DateTime Date, double Intake, double Expenditure)> GetWeeklyData()
@@ -145,33 +151,27 @@ namespace WpfApp1.Pages
             for (int i = 6; i >= 0; i--)
             {
                 DateTime day = today.AddDays(-i);
-                DateTime dayStart = day.Date;
-
-                double intake = CalorIcintake(Core.user.UserId, dayStart);
-                double activityCalories = GetActivityCalories(Core.user.UserId, profile, dayStart);
-                double expenditure = bmr + activityCalories;
+                double intake = CalorIcintake(Core.user.UserId, day);
+                double activity = GetActivityCalories(Core.user.UserId, profile, day);
+                double expenditure = bmr + activity;
 
                 result.Add((day, intake, expenditure));
             }
 
             return result;
         }
-
         void Diagram1Word()
         {
             var weeklyData = GetWeeklyData();
 
             if (weeklyData.Count == 0)
             {
-                MessageBox.Show(
-                    "Нет данных для выгрузки.",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                MessageBox.Show("Нет данных для выгрузки.", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            SaveFileDialog sfd = new SaveFileDialog
+            var sfd = new SaveFileDialog
             {
                 Filter = "Документ Word (*.docx)|*.docx",
                 FileName = $"Отчет_о_питании_{DateTime.Today:yyyy-MM-dd}"
@@ -185,9 +185,9 @@ namespace WpfApp1.Pages
 
             try
             {
-                wordApp = new WordApp.Application();
-                wordApp.Visible = false;
+                wordApp = new WordApp.Application { Visible = false };
                 doc = wordApp.Documents.Add();
+
                 WordApp.Paragraph title = doc.Content.Paragraphs.Add();
                 title.Range.Text = "Отчет о питании и энергобалансе за неделю";
                 title.Range.Font.Name = "Times New Roman";
@@ -196,11 +196,13 @@ namespace WpfApp1.Pages
                 title.Format.SpaceAfter = 12;
                 title.Alignment = WordApp.WdParagraphAlignment.wdAlignParagraphCenter;
                 title.Range.InsertParagraphAfter();
+
                 WordApp.Range tableRange = doc.Content.Paragraphs.Add().Range;
                 WordApp.Table table = doc.Tables.Add(tableRange, weeklyData.Count + 1, 4);
                 table.Borders.Enable = 1;
                 table.Range.Font.Name = "Times New Roman";
                 table.Range.Font.Size = 12;
+
                 table.Cell(1, 1).Range.Text = "Дата";
                 table.Cell(1, 2).Range.Text = "Приход (ккал)";
                 table.Cell(1, 3).Range.Text = "Расход (ккал)";
@@ -220,19 +222,13 @@ namespace WpfApp1.Pages
 
                 doc.SaveAs2(sfd.FileName);
 
-                MessageBox.Show(
-                    "Отчет успешно сохранен!",
-                    "Успех",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                MessageBox.Show("Отчет успешно сохранен!", "Успех",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Ошибка при экспорте в Word: {ex.Message}",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при экспорте в Word: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -256,38 +252,36 @@ namespace WpfApp1.Pages
         {
             switch (TypeDiagram.SelectedIndex)
             {
-                case 0:
-                    Diagram1Word();
-                    break;
+                case 0: Diagram1Word(); break;
             }
-        }
-        /*void Diagram1Excel()
+        }/*
+        void Diagram1Excel()
         {
             var weeklyData = GetWeeklyData();
 
             if (weeklyData.Count == 0)
             {
-                MessageBox.Show(
-                    "Нет данных для выгрузки.",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                MessageBox.Show("Нет данных для выгрузки.", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            SaveFileDialog sfd = new SaveFileDialog
+
+            var sfd = new SaveFileDialog
             {
                 Filter = "Документ Excel (*.xlsx)|*.xlsx",
                 FileName = $"Отчет_о_питании_{DateTime.Today:yyyy-MM-dd}"
             };
+
             if (sfd.ShowDialog() != true)
                 return;
+
             ExcelApp.Application excelApp = null;
             ExcelApp.Workbook workbook = null;
             ExcelApp.Worksheet worksheet = null;
+
             try
             {
-                excelApp = new ExcelApp.Application();
-                excelApp.Visible = false;
+                excelApp = new ExcelApp.Application { Visible = false };
                 workbook = excelApp.Workbooks.Add();
                 worksheet = (ExcelApp.Worksheet)workbook.Sheets[1];
                 worksheet.Name = "Энергобаланс";
@@ -320,20 +314,13 @@ namespace WpfApp1.Pages
                 }
                 worksheet.Columns.AutoFit();
                 workbook.SaveAs(sfd.FileName);
-
-                MessageBox.Show(
-                    "Отчет успешно сохранен в Excel!",
-                    "Успех",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                MessageBox.Show("Отчет успешно сохранен в Excel!", "Успех",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Ошибка при экспорте в Excel: {ex.Message}",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при экспорте в Excel: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -360,9 +347,7 @@ namespace WpfApp1.Pages
         {
             switch (TypeDiagram.SelectedIndex)
             {
-                case 0:
-                    //Diagram1Excel();
-                    break;
+                // case 0: Diagram1Excel(); break;
             }
         }
     }

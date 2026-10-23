@@ -23,7 +23,7 @@ namespace WpfApp1
         public int FoodId { get; set; }
         public string Name { get; set; }
         public int CategoryId { get; set; }
-        public double Calories { get; set; }
+        public Nullable<double> Calories { get; set; }
         public double ProteinG { get; set; }
         public double FatG { get; set; }
         public double CarbsG { get; set; }

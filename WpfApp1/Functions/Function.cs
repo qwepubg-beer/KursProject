@@ -59,7 +59,7 @@ namespace WpfApp1
                 .Sum(mf =>
                     (mf.WeightInG / 100.0) *(mf.Foods != null ? mf.Foods.Calories : 0)
                 );
-            return totalCalories;
+            return totalCalories ?? 0.0;
         }
 
         public static double CalorIcintake(int userId, DateTime date)
@@ -70,8 +70,10 @@ namespace WpfApp1
             var totalCalories = Core.kursEntities.Meal
                 .Where(m => m.ClientID == userId && m.Date >= dayStart && m.Date < dayEnd)
                 .SelectMany(m => m.Meal_Foods)
-                .Sum(mf =>
-                    (mf.WeightInG / 100.0) *(mf.Foods != null ? mf.Foods.Calories : 0));
+                .Sum(mf => (double?)((((double?)mf.WeightInG ?? 0.0) / 100.0) *
+                                     (mf.Foods != null ? (mf.Foods.Calories ?? 0.0) : 0.0)))
+                ?? 0.0;
+
             return totalCalories;
         }
         static public double BMR(UserProfiles profile)

@@ -54,7 +54,7 @@
           <Property Name="FoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
-          <Property Name="Calories" Type="float" Nullable="false" />
+          <Property Name="Calories" Type="float" />
           <Property Name="ProteinG" Type="float" Nullable="false" />
           <Property Name="FatG" Type="float" Nullable="false" />
           <Property Name="CarbsG" Type="float" Nullable="false" />
@@ -83,7 +83,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MealID" Type="int" Nullable="false" />
           <Property Name="FoodID" Type="int" Nullable="false" />
-          <Property Name="WeightInG" Type="int" Nullable="false" />
+          <Property Name="WeightInG" Type="float" />
         </EntityType>
         <EntityType Name="MuscleGroups">
           <Key>
@@ -688,7 +688,7 @@
           <Property Name="FoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="Calories" Type="Double" Nullable="false" />
+          <Property Name="Calories" Type="Double" />
           <Property Name="ProteinG" Type="Double" Nullable="false" />
           <Property Name="FatG" Type="Double" Nullable="false" />
           <Property Name="CarbsG" Type="Double" Nullable="false" />
@@ -723,7 +723,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MealID" Type="Int32" Nullable="false" />
           <Property Name="FoodID" Type="Int32" Nullable="false" />
-          <Property Name="WeightInG" Type="Int32" Nullable="false" />
+          <Property Name="WeightInG" Type="Double" />
           <NavigationProperty Name="Foods" Relationship="Self.FK_Meal_Foods_Foods" FromRole="Meal_Foods" ToRole="Foods" />
           <NavigationProperty Name="Meal" Relationship="Self.FK_Meal_Foods_Meal" FromRole="Meal_Foods" ToRole="Meal" />
         </EntityType>

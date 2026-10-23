@@ -27,8 +27,8 @@
             </charts:Chart>
         </WindowsFormsHost>
         <Label Content="Тип диаграммы: " HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
-        <ComboBox Name="TypeDiagram" Margin="10" Grid.Column="1">
-            <ComboBoxItem Content="Приход расход калорий"></ComboBoxItem>
+        <ComboBox Name="TypeDiagram" Margin="10" Grid.Column="1" SelectedIndex="0">
+            <ComboBoxItem Content="Приход / расход калорий"/>
         </ComboBox>
         <Button Name="wordButton" Content="Word" Grid.Column="3" Margin="10" Click="wordButton_Click"></Button>
         <Button Name="excelButton" Content="Excel" Grid.Column="2" Margin="10" Click="excelButton_Click"></Button>
