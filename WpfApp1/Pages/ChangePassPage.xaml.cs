@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Functions;
 using WpfApp1.res;
 using static WpfApp1.Function;
 namespace WpfApp1.Pages
@@ -19,23 +20,35 @@ namespace WpfApp1.Pages
     /// <summary>
     /// Логика взаимодействия для ChangePassPage.xaml
     /// </summary>
-    public partial class ChangePassPage : Page
+    public partial class ChangePassPage : Page, ITrackChanges
     {
+        private bool _isDirty = false;
         public ChangePassPage()
         {
             InitializeComponent();
+            SubscribeToChanges();
+        }
+        private void SubscribeToChanges()
+        {
+            TextBoxLogin.TextChanged += (s, e) => _isDirty = true;
+            PasswordBox1.PasswordChanged += (s, e) => _isDirty = true;
+            PasswordBox2.PasswordChanged += (s, e) => _isDirty = true;
+        }
+        public bool HasUnsavedChanges()
+        {
+            return _isDirty;
         }
 
         private void Conf_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox1.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
             else
             {
-                var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == GetHash(PasswordBox.Password));
+                var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == GetHash(PasswordBox1.Password));
                 user.Password = GetHash(PasswordBox2.Password);
                 Core.kursEntities.SaveChanges();
                 MessageBox.Show("Пароль был изменён!");

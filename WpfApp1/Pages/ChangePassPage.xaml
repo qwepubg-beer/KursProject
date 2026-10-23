@@ -18,7 +18,7 @@
             <Label Content="Логин" HorizontalAlignment="Center"></Label>
             <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134"/>
             <Label Content="Старый пароль" HorizontalAlignment="Center"></Label>
-            <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1"/>
+            <PasswordBox x:Name="PasswordBox1" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1"/>
             <Label Content="Новый пароль" HorizontalAlignment="Center"></Label>
             <PasswordBox x:Name="PasswordBox2" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1"/>
             <Button x:Name="Conf" Height="34" Content="Подтвердить" ToolTip="Кнопка входа"  Width="120" Margin="5" Click="Conf_Click"/>

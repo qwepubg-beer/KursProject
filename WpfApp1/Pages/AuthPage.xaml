@@ -29,27 +29,26 @@ VerticalAlignment="Top">
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Логин" HorizontalAlignment="Center" Grid.Row="1"></Label>
-            <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Grid.Row="2" Margin="5"/>
-            <Label Content="Пароль" HorizontalAlignment="Center" Grid.Row="3"></Label>
-            <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Grid.Row="4" Grid.Column="1" Margin="5"/>
-            <Button x:Name="ButtonEnter" Content="Вход" ToolTip="Кнопка входа" Grid.Row="5" Margin="5" Click="ButtonEnter_Click"/>
-            <Button x:Name="ButtonReg"   Content="Регистрация" ToolTip="Кнопка регистрации" Grid.Row="6"  Margin="5" Click="ButtonReg_Click"/>
-            <Button x:Name="ButtonChangePassword"  Content="Забыл пароль" ToolTip="Кнопка забыл пароль" Grid.Row="7" Margin="5" Click="ButtonChangePassword_Click"/>
+            <Label Content="Логин" HorizontalAlignment="Center" Grid.Row="0"></Label>
+            <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Grid.Row="1" Margin="5"/>
+            <Label Content="Пароль" HorizontalAlignment="Center" Grid.Row="2"></Label>
+            <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Grid.Row="3" Margin="5"/>
+            <Button x:Name="ButtonEnter" Content="Вход" ToolTip="Кнопка входа" Grid.Row="4" Margin="5" Click="ButtonEnter_Click"/>
+            <Button x:Name="ButtonReg"   Content="Регистрация" ToolTip="Кнопка регистрации" Grid.Row="5"  Margin="5" Click="ButtonReg_Click"/>
+            <Button x:Name="ButtonChangePassword"  Content="Забыл пароль" ToolTip="Кнопка забыл пароль" Grid.Row="6" Margin="5" Click="ButtonChangePassword_Click"/>
         </Grid>
         <Grid x:Name="CapchaPanel" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition Height="3*"/>
-
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Label Content="Капча:" Name="labelCaptcha" HorizontalAlignment="Left" Width="54" Visibility="Hidden" Grid.Row="1"/> 
-            <TextBox  CommandManager.PreviewExecuted="textBox_PreviewExecuted" ContextMenu="{x:Null}" Visibility="Hidden" x:Name="captcha" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" VerticalAlignment="Top"  Background="{x:Null}" FontStretch="UltraCondensed" IsReadOnly="True"  HorizontalAlignment="Right" FontSize="20" Grid.Row="2"/>
-            <TextBox  Visibility="Hidden" x:Name="captchaInput" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Row="3"/>
+            <TextBox CommandManager.PreviewExecuted="textBox_PreviewExecuted" ContextMenu="{x:Null}" Visibility="Hidden" x:Name="captcha" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" VerticalAlignment="Top"  Background="{x:Null}" FontStretch="UltraCondensed" IsReadOnly="True"  HorizontalAlignment="Right" FontSize="20" Grid.Row="2"/>
+            <TextBox Visibility="Hidden" x:Name="captchaInput" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Row="3"/>
             <Button x:Name="submitCaptcha" Visibility="Hidden" Content="Подтвердить" ToolTip="Подтвердить ввод капчи" HorizontalAlignment="Left" VerticalAlignment="Top" Click="submitCaptcha_Click" Grid.Row="4" />
         </Grid>
     </Grid>

@@ -24,7 +24,6 @@ namespace WpfApp1
             this.SleepLogs = new HashSet<SleepLogs>();
             this.TrainingPrograms = new HashSet<TrainingPrograms>();
             this.TrainingPrograms1 = new HashSet<TrainingPrograms>();
-            this.UserProfiles = new HashSet<UserProfiles>();
             this.UsersActivity = new HashSet<UsersActivity>();
         }
     
@@ -51,8 +50,7 @@ namespace WpfApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrainingPrograms> TrainingPrograms1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersActivity> UsersActivity { get; set; }
+        public virtual UserProfiles UserProfiles { get; set; }
     }
 }
