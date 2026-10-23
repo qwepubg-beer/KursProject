@@ -24,6 +24,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool IsLogOut = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace WpfApp1
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if(MainFrame.NavigationService.CanGoBack)
+            if(MainFrame.NavigationService.CanGoBack && !IsLogOut)
             {
                 MainFrame.NavigationService.GoBack();
             }
@@ -64,6 +65,7 @@ namespace WpfApp1
                 var themeService = new ThemeService();
                 string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
                 themeService.Apply(savedTheme);
+                IsLogOut = false;
                 switch (Core.user.RoleId)
                 { 
                     case 1: User_menu.Visibility = Visibility.Visible;
@@ -103,20 +105,23 @@ namespace WpfApp1
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            switch (Core.user.RoleId)
+            if(Core.user!=null)
             {
-                case 1:
-                    User_menu.Visibility = Visibility.Collapsed;
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    Admin_menu.Visibility = Visibility.Collapsed;
-                    break;
+                switch (Core.user.RoleId)
+                {
+                    case 1:
+                        User_menu.Visibility = Visibility.Collapsed;
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Admin_menu.Visibility = Visibility.Collapsed;
+                        break;
+                }
+                Core.Clear();
+                IsLogOut = false;
+                MainFrame.NavigationService.Navigate(new AuthPage());
             }
-            Core.Clear();
-            MainFrame.NavigationService.Navigate(new AuthPage());
-
         }
         private void Products_Click(object sender, RoutedEventArgs e)
         {

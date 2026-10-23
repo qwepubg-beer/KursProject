@@ -70,11 +70,17 @@ namespace WpfApp1.Pages
                 Core.kursEntities.UsersActivity.Add(newUsActv);
                 Core.kursEntities.SaveChanges();
                 MessageBox.Show("Данные сохранены!");
+                ClearActivity();
             }
             else
             {
                 MessageBox.Show("Неверный формат колличества минут!");
             }
+        }
+        private void ClearActivity()
+        {
+            ChoosingActivty.Text = "Выбрано: ";
+            ActivityListBox.SelectedItem = null;
         }
         private void SortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

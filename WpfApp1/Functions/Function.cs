@@ -52,33 +52,47 @@ namespace WpfApp1
         {
             DateTime todayStart = DateTime.Today;
             DateTime tomorrowStart = todayStart.AddDays(1);
-            var totalCalories = Core.kursEntities.Meal.Where(m => m.ClientID == Userid && m.Date >= todayStart && m.Date < tomorrowStart).SelectMany(m => m.Meal_Foods).Sum(mf => (mf.WeightInG / 100.0) * mf.Foods.Calories);
+
+            var totalCalories = Core.kursEntities.Meal
+                .Where(m => m.ClientID == Userid && m.Date >= todayStart && m.Date < tomorrowStart)
+                .SelectMany(m => m.Meal_Foods)
+                .Sum(mf =>
+                    (mf.WeightInG / 100.0) *(mf.Foods != null ? mf.Foods.Calories : 0)
+                );
             return totalCalories;
         }
+
         public static double CalorIcintake(int userId, DateTime date)
         {
             DateTime dayStart = date.Date;
             DateTime dayEnd = dayStart.AddDays(1);
-            var totalCalories = Core.kursEntities.Meal.Where(m => m.ClientID == userId && m.Date >= dayStart && m.Date < dayEnd).SelectMany(m => m.Meal_Foods).Sum(mf => (mf.WeightInG / 100.0) * mf.Foods.Calories);
+
+            var totalCalories = Core.kursEntities.Meal
+                .Where(m => m.ClientID == userId && m.Date >= dayStart && m.Date < dayEnd)
+                .SelectMany(m => m.Meal_Foods)
+                .Sum(mf =>
+                    (mf.WeightInG / 100.0) *(mf.Foods != null ? mf.Foods.Calories : 0));
             return totalCalories;
         }
         static public double BMR(UserProfiles profile)
-    {
-            if (profile.WeightKg != null && profile.HeightCm != null && profile.BirthDate!=null)
-            {
-                if (profile.Gender == "м") 
-                {
-                    return (10 * profile.WeightKg.Value) + (6.25 * profile.HeightCm.Value) - (5 * CalculateAge(profile.BirthDate.Value) + 5); 
-                }
-                else
-                {
-                    return (10 * profile.WeightKg.Value) + (6.25 * profile.HeightCm.Value) - (5 * CalculateAge(profile.BirthDate.Value) - 161);
-                }
-            }
-            else
-            {
+        {
+            if (profile == null)
                 return 0;
+            if (profile.WeightKg.HasValue && profile.HeightCm.HasValue && profile.BirthDate.HasValue)
+            {
+                int age = CalculateAge(profile.BirthDate.Value);
+                if (age < 0) return 0;
+                string gender = profile.Gender?.Trim().ToLower();
+                if (gender == "м")
+                {
+                    return (10 * profile.WeightKg.Value) + (6.25 * profile.HeightCm.Value) - (5 * age) + 5;
+                }
+                else if (gender == "ж")
+                {
+                    return (10 * profile.WeightKg.Value) + (6.25 * profile.HeightCm.Value) - (5 * age) - 161;
+                }
             }
+            return 0;
         }
 
     }

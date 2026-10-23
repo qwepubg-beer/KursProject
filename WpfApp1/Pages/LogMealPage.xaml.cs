@@ -87,13 +87,20 @@ namespace WpfApp1.Pages
                 CreateMeal();
                 CreateMealFood();
                 MessageBox.Show("Данные сохранены!");
+                ClearFood();
             }
             else
             {
                 CreateMealFood();
                 MessageBox.Show("Данные сохранены!");
+                ClearFood();
             }
 
+        }
+        private void ClearFood()
+        {
+            ChoosingProduct.Text = "Выбрано: ";
+            ProductList.SelectedItem = null;
         }
         private void TypeProductComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

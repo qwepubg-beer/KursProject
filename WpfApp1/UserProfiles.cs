@@ -22,10 +22,10 @@ namespace WpfApp1
         public Nullable<double> HeightCm { get; set; }
         public Nullable<int> GoalId { get; set; }
         public string MedicalNotes { get; set; }
+        public int UserID { get; set; }
         public string Phone { get; set; }
         public Nullable<double> WeightKg { get; set; }
         public int StyleId { get; set; }
-        public int UserID { get; set; }
     
         public virtual Goals Goals { get; set; }
         public virtual Styles Styles { get; set; }

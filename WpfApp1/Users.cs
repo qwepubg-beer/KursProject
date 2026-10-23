@@ -49,8 +49,8 @@ namespace WpfApp1
         public virtual ICollection<TrainingPrograms> TrainingPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrainingPrograms> TrainingPrograms1 { get; set; }
+        public virtual UserProfiles UserProfiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersActivity> UsersActivity { get; set; }
-        public virtual UserProfiles UserProfiles { get; set; }
     }
 }

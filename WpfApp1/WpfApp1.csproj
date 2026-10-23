@@ -363,5 +363,8 @@
     <Content Include="db\up01.sql" />
     <Resource Include="DO.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

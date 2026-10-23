@@ -261,7 +261,7 @@ namespace WpfApp1.Pages
                     break;
             }
         }
-        void Diagram1Excel()
+        /*void Diagram1Excel()
         {
             var weeklyData = GetWeeklyData();
 
@@ -355,13 +355,13 @@ namespace WpfApp1.Pages
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-        }
+        }*/
         private void excelButton_Click(object sender, RoutedEventArgs e)
         {
             switch (TypeDiagram.SelectedIndex)
             {
                 case 0:
-                    Diagram1Excel();
+                    //Diagram1Excel();
                     break;
             }
         }
