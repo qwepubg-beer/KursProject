@@ -10,9 +10,9 @@ namespace WpfApp1
 {
     static internal class Function
     {
-        public const int CaloriesInProt = 4;
-        public const int CaloriesInFat = 10;
-        public const int CaloriesInCarb = 4;
+        //public const int CaloriesInProt = 4;
+        //public const int CaloriesInFat = 10;
+        //public const int CaloriesInCarb = 4;
         public static string GetHash(String password)
         {
             using (var hash = SHA1.Create())

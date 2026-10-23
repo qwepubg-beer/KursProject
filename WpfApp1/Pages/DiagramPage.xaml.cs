@@ -100,7 +100,7 @@ namespace WpfApp1.Pages
         private List<(DateTime Date, double Intake, double Expenditure)> GetWeeklyData()
         {
             var result = new List<(DateTime, double, double)>();
-            var profile = Core.kursEntities.UserProfiles.FirstOrDefault(p => p.ProfileID == Core.user.UserId);
+            var profile = Core.kursEntities.UserProfiles.FirstOrDefault(p => p.UserID == Core.user.UserId);
 
             if (profile == null) return result;
 
@@ -182,7 +182,7 @@ namespace WpfApp1.Pages
                 {
                     if (doc != null)
                     {
-                        doc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+                        doc.Close(Microsoft.Office.Interop.Word.WdSaveOptions.wdDoNotSaveChanges);
                         System.Runtime.InteropServices.Marshal.ReleaseComObject(doc);
                     }
                     if (wordApp != null)

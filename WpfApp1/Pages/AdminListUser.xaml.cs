@@ -47,27 +47,13 @@ namespace WpfApp1.Pages
                 {
                     foreach (var user in UsersList)
                     {
-                        if (user.UserId == 0)
+                        var existingUser = Core.kursEntities.Users.Find(user.UserId);
+                        if (existingUser != null)
                         {
-                            var newUser = new Users
-                            {
-                                Email = user.Email,
-                                Password = user.Password,
-                                IsActive = user.IsActive,
-                                RoleId= ReturnRoleID(user.RoleId)
-                            };
-                            Core.kursEntities.Users.Add(newUser);
-                        }
-                        else
-                        {
-                            var existingUser = Core.kursEntities.Users.Find(user.UserId);
-                            if (existingUser != null)
-                            {
                                 existingUser.Email = user.Email;
                                 existingUser.Password = user.Password;
                                 existingUser.IsActive = user.IsActive;
                                 existingUser.RoleId = ReturnRoleID(user.RoleId);
-                            }
                         }
                     }
                     Core.kursEntities.SaveChanges();
@@ -81,22 +67,6 @@ namespace WpfApp1.Pages
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-        }
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            var newUser = new Users
-            {
-                UserId = 0,
-                Email = "",
-                Password = "",
-                RoleId = RolesList.FirstOrDefault()?.RoleId ?? 0,
-                IsActive = true,
-                CreatedAt = DateTime.Now,
-            };
-
-            UsersList.Add(newUser);
-            UserDataGrid.SelectedItem = newUser;
-            UserDataGrid.ScrollIntoView(newUser);
         }
         public int ReturnRoleID(int id)
         {

@@ -11,14 +11,14 @@ namespace WpfApp1.Functions
     {
         public static string GetTheme(int userId)
         {
-            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => s.ProfileID == userId);
+            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => s.UserID == userId);
             return setting != null ? Core.kursEntities.Styles.Find(setting.StyleId).Name : "Light";
 
         }
 
         public static void SaveTheme(int userId,int StyleID)
         {
-            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => userId == s.ProfileID);
+            var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => userId == s.UserID);
             if (setting != null)
             {
                 setting.StyleId = StyleID;

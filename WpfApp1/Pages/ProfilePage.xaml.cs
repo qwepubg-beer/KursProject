@@ -40,7 +40,7 @@ namespace WpfApp1.Pages
         }
         void save()
         {
-            UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u => u.ProfileID == Core.profile.ProfileID);
+            UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u => u.UserID == Core.profile.UserID);
             if (userProfiles != null)
             {
                 if (!string.IsNullOrWhiteSpace(TextBoxFIO.Text))

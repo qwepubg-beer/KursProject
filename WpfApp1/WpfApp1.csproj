@@ -72,9 +72,57 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Activity.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciseCategories.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exercises.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodCategories.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Foods.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
     <Compile Include="Functions\Core.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\SettingsRepository.cs" />
+    <Compile Include="Goals.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Meal.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Meal_Foods.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MuscleGroups.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionTargets.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminListUser.xaml.cs">
       <DependentUpon>AdminListUser.xaml</DependentUpon>
     </Compile>
@@ -108,7 +156,40 @@
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgramDays.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramExercises.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressMeasurements.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\ThemeService.cs" />
+    <Compile Include="SleepLogs.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Styles.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingPrograms.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfiles.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersActivity.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
     <Page Include="Pages\AdminListUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +277,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="base.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>base.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="base.edmx.diagram">
+      <DependentUpon>base.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -260,6 +348,16 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="base.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>base.edmx</DependentUpon>
+      <LastGenOutput>base.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="base.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>base.edmx</DependentUpon>
+      <LastGenOutput>base.cs</LastGenOutput>
+    </Content>
     <Content Include="db\up01.sql" />
     <Resource Include="DO.txt" />
   </ItemGroup>

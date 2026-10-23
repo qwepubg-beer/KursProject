@@ -15,7 +15,7 @@ namespace WpfApp1.res
         {
             if(user!=null)
             {
-                profile = user.UserProfiles;
+                profile = kursEntities.UserProfiles.First(a=> a.UserID==user.UserId);
             }
         }
         public static void Clear()
@@ -37,7 +37,7 @@ namespace WpfApp1.res
         }
         public static void editProfile()
         {
-            var prof = kursEntities.UserProfiles.Find(profile.ProfileID);
+            var prof = kursEntities.UserProfiles.First(a => a.UserID == user.UserId);
             prof.WeightKg = kursEntities.ProgressMeasurements.AsNoTracking().First(u=>u.UserID==user.UserId).WeightKg;
             prof.HeightCm = kursEntities.ProgressMeasurements.AsNoTracking().First(u => u.UserID == user.UserId).HeightCm;
             kursEntities.SaveChanges();
