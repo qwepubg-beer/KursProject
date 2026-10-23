@@ -69,6 +69,7 @@ namespace WpfApp1.Pages
                 };
                 Core.kursEntities.UsersActivity.Add(newUsActv);
                 Core.kursEntities.SaveChanges();
+                MessageBox.Show("Данные сохранены!");
             }
             else
             {

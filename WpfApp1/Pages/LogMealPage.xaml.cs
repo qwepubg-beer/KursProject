@@ -86,10 +86,12 @@ namespace WpfApp1.Pages
             {
                 CreateMeal();
                 CreateMealFood();
+                MessageBox.Show("Данные сохранены!");
             }
             else
             {
                 CreateMealFood();
+                MessageBox.Show("Данные сохранены!");
             }
 
         }
