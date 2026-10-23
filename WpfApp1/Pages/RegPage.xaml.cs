@@ -61,7 +61,7 @@ namespace WpfApp1.Pages
                                 Core.kursEntities.SaveChanges();
                                 UserProfiles userProfiles = new UserProfiles()
                                 {
-                                    ProfileID = newUser.UserId,
+                                    UserID = newUser.UserId,
                                     StyleId = 1
                                 };
                                 Core.kursEntities.UserProfiles.Add(userProfiles);
