@@ -36,14 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\WpfUP_GM\WpfUP_GM\EntityFramework.dll</HintPath>
+      <HintPath>..\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\WpfUP_GM\WpfUP_GM\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.16.0.18925.20022\lib\net40\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
@@ -76,57 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Activity.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="base.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>base.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="base.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="base.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>base.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Equipment.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExerciseCategories.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Exercises.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FoodCategories.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Foods.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
     <Compile Include="Functions\Core.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\SettingsRepository.cs" />
-    <Compile Include="Goals.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Meal.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Meal_Foods.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MuscleGroups.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NutritionTargets.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AdminListUser.xaml.cs">
       <DependentUpon>AdminListUser.xaml</DependentUpon>
     </Compile>
@@ -160,40 +108,7 @@
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProgramDays.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramExercises.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressMeasurements.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Roles.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
     <Compile Include="Services\ThemeService.cs" />
-    <Compile Include="SleepLogs.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Styles.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TrainingPrograms.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserProfiles.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersActivity.cs">
-      <DependentUpon>base.tt</DependentUpon>
-    </Compile>
     <Page Include="Pages\AdminListUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,13 +196,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="base.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>base.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="base.edmx.diagram">
-      <DependentUpon>base.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -305,21 +213,30 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Excel">
-      <Guid>{45541000-5750-5300-4B49-4E47534F4655}</Guid>
-      <VersionMajor>3</VersionMajor>
-      <VersionMinor>0</VersionMinor>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
+      <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="Office">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>99</VersionMajor>
-      <VersionMinor>1</VersionMinor>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word1">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
@@ -341,27 +258,8 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="Word">
-      <Guid>{00020905-0000-4B30-A977-D214852036FF}</Guid>
-      <VersionMajor>3</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="base.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>base.edmx</DependentUpon>
-      <LastGenOutput>base.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="base.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>base.edmx</DependentUpon>
-      <LastGenOutput>base.cs</LastGenOutput>
-    </Content>
     <Content Include="db\up01.sql" />
     <Resource Include="DO.txt" />
   </ItemGroup>
