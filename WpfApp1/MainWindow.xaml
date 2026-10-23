@@ -21,7 +21,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Frame Name="MainFrame" Grid.RowSpan="7" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Name="MainFrame" Grid.RowSpan="8" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
         <Grid Name="User_menu" Grid.Row="1" Grid.RowSpan="4"  Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition/>
