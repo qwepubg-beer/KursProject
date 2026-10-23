@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Forms.DataVisualization.Charting;
 using WpfApp1.res;
 using static WpfApp1.Function;
-using ExcelApp = Microsoft.Office.Interop.Excel;
+//using ExcelApp = Microsoft.Office.Interop.Excel;
 using WordApp = Microsoft.Office.Interop.Word;
 namespace WpfApp1.Pages
 {
