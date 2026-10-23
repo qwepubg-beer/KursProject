@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6d80242715d4a0793ebe5f8079c046c" Name="Diagram1">
-        <EntityTypeShape EntityType="KursModel.Activity" Width="1.5" PointX="6" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Equipment" Width="1.5" PointX="8.25" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.ExerciseCategories" Width="1.5" PointX="8.25" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KursModel.Exercises" Width="1.5" PointX="10.5" PointY="23" IsExpanded="true" />
+      <Diagram DiagramId="60b516b15f364d93a61733b7d5923758" Name="Diagram1">
+        <EntityTypeShape EntityType="KursModel.Activity" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Equipment" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.ExerciseCategories" Width="1.5" PointX="8.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursModel.Exercises" Width="1.5" PointX="10.5" PointY="24" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.FoodCategories" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.Foods" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KursModel.Goals" Width="1.5" PointX="8" PointY="5.5" IsExpanded="true" />
