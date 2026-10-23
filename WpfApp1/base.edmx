@@ -144,7 +144,7 @@
           <Property Name="BicepsCm" Type="float" />
           <Property Name="BodyFatPct" Type="float" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="HeightCm" Type="float" />
+          <Property Name="HeightCm" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -208,7 +208,7 @@
           <Property Name="HeightCm" Type="float" />
           <Property Name="GoalId" Type="int" />
           <Property Name="MedicalNotes" Type="nvarchar(max)" />
-          <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="WeightKg" Type="float" />
           <Property Name="StyleId" Type="int" Nullable="false" />
@@ -793,7 +793,7 @@
           <Property Name="BicepsCm" Type="Double" />
           <Property Name="BodyFatPct" Type="Double" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="HeightCm" Type="Double" />
+          <Property Name="HeightCm" Type="Double" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_ProgressMeasurements_Users" FromRole="ProgressMeasurements" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
@@ -865,7 +865,7 @@
           <Property Name="HeightCm" Type="Double" />
           <Property Name="GoalId" Type="Int32" />
           <Property Name="MedicalNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileID" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WeightKg" Type="Double" />
           <Property Name="StyleId" Type="Int32" Nullable="false" />

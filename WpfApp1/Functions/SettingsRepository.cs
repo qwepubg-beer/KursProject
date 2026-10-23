@@ -12,7 +12,7 @@ namespace WpfApp1.Functions
         public static string GetTheme(int userId)
         {
             var setting = Core.kursEntities.UserProfiles.FirstOrDefault(s => s.ProfileID == userId);
-            return setting != null ? setting.Styles.Name : "Light";
+            return setting != null ? Core.kursEntities.Styles.Find(setting.StyleId).Name : "Light";
 
         }
 

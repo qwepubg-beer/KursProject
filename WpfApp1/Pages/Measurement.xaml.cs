@@ -54,8 +54,7 @@ namespace WpfApp1.Pages
         {
             UserDataGrid.CommitEdit();
             var result = System.Windows.MessageBox.Show("Сохранить все изменения?", "Подтверждение",MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes && Measurements!=null)
             {
                 try
                 {
@@ -86,6 +85,7 @@ namespace WpfApp1.Pages
                 {
                     System.Windows.MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+
             }
         }
     }

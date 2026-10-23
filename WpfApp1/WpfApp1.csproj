@@ -77,55 +77,55 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Activity.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
-    <Compile Include="bd.Context.cs">
+    <Compile Include="base.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bd.Context.tt</DependentUpon>
+      <DependentUpon>base.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="bd.cs">
+    <Compile Include="base.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
-    <Compile Include="bd.Designer.cs">
+    <Compile Include="base.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bd.edmx</DependentUpon>
+      <DependentUpon>base.edmx</DependentUpon>
     </Compile>
     <Compile Include="Equipment.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="ExerciseCategories.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Exercises.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="FoodCategories.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Foods.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Functions\Core.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\SettingsRepository.cs" />
     <Compile Include="Goals.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Meal.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Meal_Foods.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="MuscleGroups.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="NutritionTargets.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminListUser.xaml.cs">
       <DependentUpon>AdminListUser.xaml</DependentUpon>
@@ -157,42 +157,42 @@
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProgramDays.cs">
-      <DependentUpon>bd.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramExercises.cs">
-      <DependentUpon>bd.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressMeasurements.cs">
-      <DependentUpon>bd.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgramDays.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramExercises.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressMeasurements.cs">
+      <DependentUpon>base.tt</DependentUpon>
+    </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\ThemeService.cs" />
     <Compile Include="SleepLogs.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Styles.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="TrainingPrograms.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="UserProfiles.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Compile Include="UsersActivity.cs">
-      <DependentUpon>bd.tt</DependentUpon>
+      <DependentUpon>base.tt</DependentUpon>
     </Compile>
     <Page Include="Pages\AdminListUser.xaml">
       <SubType>Designer</SubType>
@@ -281,12 +281,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="bd.edmx">
+    <EntityDeploy Include="base.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>bd.Designer.cs</LastGenOutput>
+      <LastGenOutput>base.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="bd.edmx.diagram">
-      <DependentUpon>bd.edmx</DependentUpon>
+    <None Include="base.edmx.diagram">
+      <DependentUpon>base.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -352,15 +352,15 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bd.Context.tt">
+    <Content Include="base.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bd.edmx</DependentUpon>
-      <LastGenOutput>bd.Context.cs</LastGenOutput>
+      <DependentUpon>base.edmx</DependentUpon>
+      <LastGenOutput>base.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="bd.tt">
+    <Content Include="base.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bd.edmx</DependentUpon>
-      <LastGenOutput>bd.cs</LastGenOutput>
+      <DependentUpon>base.edmx</DependentUpon>
+      <LastGenOutput>base.cs</LastGenOutput>
     </Content>
     <Content Include="db\up01.sql" />
     <Resource Include="DO.txt" />

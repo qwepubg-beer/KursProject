@@ -23,7 +23,7 @@ namespace WpfApp1
         public Nullable<double> BicepsCm { get; set; }
         public Nullable<double> BodyFatPct { get; set; }
         public int UserID { get; set; }
-        public Nullable<double> HeightCm { get; set; }
+        public double HeightCm { get; set; }
     
         public virtual Users Users { get; set; }
     }

@@ -23,7 +23,6 @@ namespace WpfApp1.Pages
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         private int failedAttempts = 0;
-        private Users currentUser;
         public AuthPage()
         {
             InitializeComponent();

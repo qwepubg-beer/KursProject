@@ -27,6 +27,7 @@ namespace WpfApp1.Pages
         public LogActive()
         {
             InitializeComponent();
+            LoadData();
         }
 
         void LoadData()

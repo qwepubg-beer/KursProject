@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -21,7 +22,7 @@ namespace WpfApp1.Pages
 
     public partial class ProfilePage : Page
     {
-        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+        MainWindow mainWindow = System.Windows.Application.Current.MainWindow as MainWindow;
         public ProfilePage()
         {
             InitializeComponent();
@@ -42,19 +43,39 @@ namespace WpfApp1.Pages
             UserProfiles userProfiles = Core.kursEntities.UserProfiles.FirstOrDefault(u => u.ProfileID == Core.profile.ProfileID);
             if (userProfiles != null)
             {
-                List<string> list = TextBoxFIO.Text.Split(' ').ToList();
-                userProfiles.FirstName = list[1];
-                userProfiles.LastName = list[0];
-                userProfiles.MiddleName = list[2];
+                if (!string.IsNullOrWhiteSpace(TextBoxFIO.Text))
+                {
+                    var list = TextBoxFIO.Text
+                        .Trim()
+                        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                        .ToList();
+
+                    if (list.Count < 2 || list.Count > 3)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Введите ФИО в формате: Фамилия Имя [Отчество] (через пробел)",
+                            "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    userProfiles.LastName = list[0];
+                    userProfiles.FirstName = list[1];
+                    userProfiles.MiddleName = list.Count == 3 ? list[2] : string.Empty;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Поле ФИО не может быть пустым",
+                        "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 userProfiles.Gender = СomboBxGender.SelectedIndex == 0 ? "м" : "ж";
-                userProfiles.GoalId = СomboBxGoal.SelectedIndex;
+                Goals g = СomboBxGoal.SelectedItem as Goals;
+                userProfiles.GoalId = g.GoalId;
                 userProfiles.BirthDate = birthday.DisplayDate;
                 Core.kursEntities.SaveChanges();
             }
         }
         private void ButtonChange_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Сохранить изменения?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = System.Windows.MessageBox.Show("Сохранить изменения?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 save();
@@ -64,7 +85,7 @@ namespace WpfApp1.Pages
 
         private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Сохранить изменения?","Подтверждение", MessageBoxButton.YesNo,MessageBoxImage.Question);
+            var result = System.Windows.MessageBox.Show("Сохранить изменения?","Подтверждение", MessageBoxButton.YesNo,MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes) { 
                 save(); 
                 mainWindow.MainFrame.NavigationService.Navigate(new ChangePassPage());
@@ -83,7 +104,7 @@ namespace WpfApp1.Pages
                 string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
                 themeService.Apply(savedTheme);
             }
-            else {MessageBox.Show("Выбирите тему!");}
+            else { System.Windows.MessageBox.Show("Выбирите тему!");}
         }
     }
 }
