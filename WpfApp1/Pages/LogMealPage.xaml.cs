@@ -56,7 +56,7 @@ namespace WpfApp1.Pages
             Meal meal = new Meal()
             {
                 ClientID = Core.user.UserId,
-                Date =DateTime.Now
+                Date =DateTime.Today
             };
             Core.kursEntities.Meal.Add(meal);
             Core.kursEntities.SaveChanges();

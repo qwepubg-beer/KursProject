@@ -3,37 +3,61 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:System="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:WpfApp1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminListUser">
-
-
+    <Page.Resources>
+        <x:Array x:Key="RolesArray" Type="System:String">
+            <System:String>Администратор</System:String>
+            <System:String>Пользователь</System:String>
+            <System:String>Тренер</System:String>
+        </x:Array>
+    </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="1" Height="40">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name="Save" Width="Auto" Content="Сохранить" Click="Save_Click" Grid.Column="0"/>
+            <Button Name="Save" Content="Сохранить" Click="Save_Click" Grid.Column="1"/>
         </Grid>
-        <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Row="1" FontSize="20">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Почта" Binding="{Binding Email}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Номер роли" Binding="{Binding RoleId}"/>
-                <DataGridTextColumn Header="Роль" Binding="{Binding Roles.Name}" IsReadOnly="True"/>
-                <DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView x:Name="UserDataGrid" Grid.Row="1" FontSize="18" Margin="10" HorizontalContentAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Почта" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Width="200" Padding="2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Роль" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{StaticResource RolesArray}"
+                                          SelectedIndex="{Binding RoleId, UpdateSourceTrigger=PropertyChanged}"
+                                          Width="180"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Активен" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

@@ -45,8 +45,9 @@
                     <Image Source="pack://application:,,,/res/Icons/diagram.ico"/>
                 </Button>
             </Grid>
-            <Grid Name="Admin_menu" Grid.Row="1" Grid.RowSpan="2" Visibility="Collapsed" Background="Transparent">
+            <Grid Name="Admin_menu" Grid.Row="1" Grid.RowSpan="3" Visibility="Collapsed" Background="Transparent">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -56,6 +57,7 @@
                 <Button Name="Users" Click="Users_Click" Grid.Row="1" Margin="2">
                     <Image Source="pack://application:,,,/res/Icons/Ausers.ico"/>
                 </Button>
+                <Button Name="ChangePas" Click="ChangePas_Click" Grid.Row="2" Margin="2"/>
             </Grid>
             <Button Name="Logout" Grid.Row="6" Click="Logout_Click" Margin="2">
                 <Image Source="pack://application:,,,/res/Icons/logout.ico"/>

@@ -55,7 +55,7 @@ namespace WpfApp1.Pages
                 }
                 else
                 {
-                var user = Core.kursEntities.Users.FirstOrDefault(u => u.Email == TextBoxEmail.Text && u.Password == GetHash(PasswordBox1.Password));
+                var user = Core.kursEntities.Users.Find(Core.user.UserId);
                 user.Password = GetHash(PasswordBox2.Password);
                 Core.kursEntities.SaveChanges();
                 MessageBox.Show("Пароль был изменён!");

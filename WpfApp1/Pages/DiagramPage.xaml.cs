@@ -7,20 +7,21 @@ using System.Windows.Controls;
 using System.Windows.Forms.DataVisualization.Charting;
 using WpfApp1.res;
 using static WpfApp1.Function;
-using ExcelApp = Microsoft.Office.Interop.Excel;
+//using ExcelApp = Microsoft.Office.Interop.Excel;
 using WordApp = Microsoft.Office.Interop.Word;
 
 namespace WpfApp1.Pages
 {
     public partial class DiagramPage : System.Windows.Controls.Page
     {
+        
         public DiagramPage()
         {
             InitializeComponent();
-            TypeDiagram.SelectionChanged += TypeDiagram_SelectionChanged;
-            Loaded += DiagramPage_Loaded;
+            //TypeDiagram.SelectionChanged += TypeDiagram_SelectionChanged;
+            //Loaded += DiagramPage_Loaded;
         }
-
+/*
         private void DiagramPage_Loaded(object sender, RoutedEventArgs e)
         {
             if (TypeDiagram.SelectedIndex < 0)
@@ -247,14 +248,14 @@ namespace WpfApp1.Pages
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-        }
+        }*/
         private void wordButton_Click(object sender, RoutedEventArgs e)
         {
             switch (TypeDiagram.SelectedIndex)
             {
-                case 0: Diagram1Word(); break;
+                //case 0: Diagram1Word(); break;
             }
-        }
+        }/*
         void Diagram1Excel()
         {
             var weeklyData = GetWeeklyData();
@@ -342,13 +343,14 @@ namespace WpfApp1.Pages
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-        }
+        }*/
         private void excelButton_Click(object sender, RoutedEventArgs e)
         {
             switch (TypeDiagram.SelectedIndex)
             {
-                case 0: Diagram1Excel(); break;
+                //case 0: Diagram1Excel(); break;
             }
         }
+        
     }
 }

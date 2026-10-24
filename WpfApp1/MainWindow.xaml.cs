@@ -139,5 +139,10 @@ namespace WpfApp1
         {
             MainFrame.NavigationService.Navigate(new AdminProductPage());
         }
+
+        private void ChangePas_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ChangePassPage());
+        }
     }
 }
