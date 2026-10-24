@@ -38,7 +38,6 @@ namespace WpfApp1.Pages
         {
             return _isDirty;
         }
-
         private void Conf_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxEmail.Text) || string.IsNullOrEmpty(PasswordBox1.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
@@ -59,6 +58,7 @@ namespace WpfApp1.Pages
                 user.Password = GetHash(PasswordBox2.Password);
                 Core.kursEntities.SaveChanges();
                 MessageBox.Show("Пароль был изменён!");
+
                 }
             }
         }

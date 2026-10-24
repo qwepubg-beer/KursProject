@@ -361,7 +361,6 @@
     <Resource Include="res\Icons\measurement.ico" />
     <Resource Include="res\Icons\record.ico" />
     <Resource Include="res\Icons\turnoff.ico" />
-    <Resource Include="DO.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
