@@ -42,7 +42,6 @@
             <PasswordBox x:Name="PasswordBox2" Background="Transparent" ToolTip="Введите пароль"   Grid.Column="1" Margin="5" Grid.Row="2"/>
             <ComboBox x:Name="comboBxRole" Grid.Column="1" ToolTip="Выберите роль" Grid.Row="3"  RenderTransformOrigin="0.144,0.522" Height="37" Margin="5">
                 <ComboBoxItem Content="User" />
-                <ComboBoxItem Content="Treiner" />
             </ComboBox>
             <Button x:Name="ButtonEnter" Height="34" Content="Зарегистрироваться" ToolTip="Кнопка входа"  Width="150" Margin="5" Grid.Row="4" Grid.ColumnSpan="2" Click="ButtonEnter_Click"></Button>
         </Grid>

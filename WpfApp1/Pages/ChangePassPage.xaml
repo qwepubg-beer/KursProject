@@ -15,8 +15,8 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="MainFiels" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
-            <Label Content="Логин" HorizontalAlignment="Center"></Label>
-            <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134"/>
+            <Label Content="Почта" HorizontalAlignment="Center"></Label>
+            <TextBox x:Name="TextBoxEmail" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34"  Width="134"/>
             <Label Content="Старый пароль" HorizontalAlignment="Center"></Label>
             <PasswordBox x:Name="PasswordBox1" Background="Transparent" ToolTip="Введите пароль" Width="134" Height="32"  Grid.Column="1"/>
             <Label Content="Новый пароль" HorizontalAlignment="Center"></Label>

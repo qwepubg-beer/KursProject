@@ -81,6 +81,7 @@ namespace WpfApp1.Pages
                     }
                     else
                     {
+                        MessageBox.Show("Пароль должен длиенее 6 символов!");
                         return false;
                     }
                 }

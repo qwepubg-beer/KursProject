@@ -30,7 +30,7 @@ namespace WpfApp1.Pages
         }
         private void SubscribeToChanges()
         {
-            TextBoxLogin.TextChanged += (s, e) => _isDirty = true;
+            TextBoxEmail.TextChanged += (s, e) => _isDirty = true;
             PasswordBox1.PasswordChanged += (s, e) => _isDirty = true;
             PasswordBox2.PasswordChanged += (s, e) => _isDirty = true;
         }
@@ -41,17 +41,25 @@ namespace WpfApp1.Pages
 
         private void Conf_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox1.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
+            if (string.IsNullOrEmpty(TextBoxEmail.Text) || string.IsNullOrEmpty(PasswordBox1.Password) || string.IsNullOrEmpty(PasswordBox2.Password))
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
             else
             {
-                var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == GetHash(PasswordBox1.Password));
+                if(PasswordBox1.Password == PasswordBox2.Password)
+                {
+                    PasswordBox2.Password = "";
+                    MessageBox.Show("Пароли не могут совпадать!");
+                }
+                else
+                {
+                var user = Core.kursEntities.Users.FirstOrDefault(u => u.Email == TextBoxEmail.Text && u.Password == GetHash(PasswordBox1.Password));
                 user.Password = GetHash(PasswordBox2.Password);
                 Core.kursEntities.SaveChanges();
                 MessageBox.Show("Пароль был изменён!");
+                }
             }
         }
     }

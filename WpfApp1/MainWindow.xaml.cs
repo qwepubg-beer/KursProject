@@ -24,7 +24,6 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool IsLogOut = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +46,7 @@ namespace WpfApp1
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if(MainFrame.NavigationService.CanGoBack && !IsLogOut)
+            if(MainFrame.NavigationService.CanGoBack)
             {
                 MainFrame.NavigationService.GoBack();
             }
@@ -65,7 +64,6 @@ namespace WpfApp1
                 var themeService = new ThemeService();
                 string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
                 themeService.Apply(savedTheme);
-                IsLogOut = false;
                 switch (Core.user.RoleId)
                 { 
                     case 1: User_menu.Visibility = Visibility.Visible;
@@ -124,9 +122,17 @@ namespace WpfApp1
                             break;
                     }
                     Core.Clear();
-                    IsLogOut = true;
+                    MainFrame.Navigated += MainFrame_Navigated_ClearHistory;
                     MainFrame.NavigationService.Navigate(new AuthPage());
                 }
+            }
+        }
+        private void MainFrame_Navigated_ClearHistory(object sender, NavigationEventArgs e)
+        {
+            MainFrame.Navigated -= MainFrame_Navigated_ClearHistory;
+            while (MainFrame.NavigationService.CanGoBack)
+            {
+                MainFrame.NavigationService.RemoveBackEntry();
             }
         }
         private void Products_Click(object sender, RoutedEventArgs e)
