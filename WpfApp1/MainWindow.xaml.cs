@@ -12,7 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using WpfApp1.Functions;
+using WpfApp1.Pages;
+using WpfApp1.res;
+using static WpfApp1.Function;
+using WpfApp1.Services;
 namespace WpfApp1
 {
     /// <summary>
@@ -23,6 +27,122 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.NavigationService.Navigate(new AuthPage());
+            MainFrame.Navigating += MainFrame_Navigating;
+        }
+        private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (MainFrame.Content is ITrackChanges currentPage)
+            {
+                if (currentPage.HasUnsavedChanges())
+                {
+                    var result = MessageBox.Show("У вас есть несохраненные изменения! Вы уверены, что хотите покинуть страницу? Все несохраненные данные будут потеряны.", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if(MainFrame.NavigationService.CanGoBack)
+            {
+                MainFrame.NavigationService.GoBack();
+            }
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Закрыть приложение?","Подтверждение",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+                this.Close();
+        }
+        public void LoadDate()
+        {
+            if (IsEnter() && Core.user.IsActive) 
+            {
+                var themeService = new ThemeService();
+                string savedTheme = SettingsRepository.GetTheme(Core.user.UserId);
+                themeService.Apply(savedTheme);
+                switch (Core.user.RoleId)
+                { 
+                    case 1: User_menu.Visibility = Visibility.Visible;
+                        MainFrame.NavigationService.Navigate(new RecordsPage());
+                        break;
+                    case 2: 
+                        break;
+                    case 3:
+                        Admin_menu.Visibility = Visibility.Visible;
+                        MainFrame.NavigationService.Navigate(new AdminListUser());
+                        break;
+                }
+            }
+        }
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ProfilePage());
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AdminListUser());
+        }
+
+        private void Diagrams_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new DiagramPage());
+        }
+
+        private void Measurement_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new Measurement());
+        }
+
+        private void Records_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new RecordsPage());
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Выйти из аккаунта?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                if (Core.user != null)
+                {
+                    switch (Core.user.RoleId)
+                    {
+                        case 1:
+                            User_menu.Visibility = Visibility.Collapsed;
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            Admin_menu.Visibility = Visibility.Collapsed;
+                            break;
+                    }
+                    Core.Clear();
+                    MainFrame.Navigated += MainFrame_Navigated_ClearHistory;
+                    MainFrame.NavigationService.Navigate(new AuthPage());
+                }
+            }
+        }
+        private void MainFrame_Navigated_ClearHistory(object sender, NavigationEventArgs e)
+        {
+            MainFrame.Navigated -= MainFrame_Navigated_ClearHistory;
+            while (MainFrame.NavigationService.CanGoBack)
+            {
+                MainFrame.NavigationService.RemoveBackEntry();
+            }
+        }
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AdminProductPage());
+        }
+
+        private void ChangePas_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ChangePassPage());
         }
     }
 }

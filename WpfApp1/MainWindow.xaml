@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="1000">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{DynamicResource WindowBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Name="Back" Click="Back_Click" Grid.Row="0" Margin="2">
+                <Image Source="pack://application:,,,/res/Icons/back.ico"/>
+            </Button>
+            <Grid Name="User_menu" Grid.Row="1" Grid.RowSpan="4" Visibility="Collapsed" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Name="Account" Click="Account_Click" Grid.Row="0" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/acc.ico"/>
+                </Button>
+                <Button Name="Records" Click="Records_Click" Grid.Row="1" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/record.ico"/>
+                </Button>
+                <Button Name="Measurement" Click="Measurement_Click" Grid.Row="2" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/measurement.ico"/>
+                </Button>
+                <Button Name="Diagrams" Click="Diagrams_Click" Grid.Row="3" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/diagram.ico"/>
+                </Button>
+            </Grid>
+            <Grid Name="Admin_menu" Grid.Row="1" Grid.RowSpan="3" Visibility="Collapsed" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Name="Products" Click="Products_Click" Grid.Row="0" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/Aproducts.ico"/>
+                </Button>
+                <Button Name="Users" Click="Users_Click" Grid.Row="1" Margin="2">
+                    <Image Source="pack://application:,,,/res/Icons/Ausers.ico"/>
+                </Button>
+                <Button Name="ChangePas" Click="ChangePas_Click" Grid.Row="2" Margin="2"/>
+            </Grid>
+            <Button Name="Logout" Grid.Row="6" Click="Logout_Click" Margin="2">
+                <Image Source="pack://application:,,,/res/Icons/logout.ico"/>
+            </Button>
+            <Button Name="Exit" Grid.Row="7" Click="CloseButton_Click" Margin="2">
+                <Image Source="pack://application:,,,/res/Icons/turnoff.ico"/>
+            </Button>
+        </Grid>
+        <Frame Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
