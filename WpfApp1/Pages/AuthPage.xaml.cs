@@ -30,100 +30,90 @@ namespace WpfApp1.Pages
         }
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
-
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) ||
-            string.IsNullOrEmpty(PasswordBox.Password))
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
             {
                 MessageBox.Show("Введите логин или пароль");
                 return;
             }
+            if (CapchaPanel.Visibility == Visibility.Visible)
+            {
+                MessageBox.Show("Сначала подтвердите капчу!");
+                return;
+            }
             string hashedPassword = GetHash(PasswordBox.Password);
             var user = Core.kursEntities.Users.AsNoTracking().FirstOrDefault(u => u.Email == TextBoxLogin.Text && u.Password == hashedPassword);
-                if (user == null)
+
+            if (user == null)
+            {
+                MessageBox.Show("Пользователь с такими данными не найден!");
+                failedAttempts++;
+
+                if (failedAttempts >= 3)
                 {
-                    MessageBox.Show("Пользователь с такими данными не найден!");
-                    failedAttempts++;
-                    if (failedAttempts >= 3)
+                    if (CapchaPanel.Visibility != Visibility.Visible)
                     {
-                        if (captcha.Visibility != Visibility.Visible)
-                        {
-                            CaptchaSwitch();
-                        }
-                        CaptchaChange();
+                        CaptchaSwitch(true);
                     }
-                    return;
+                    CaptchaChange();
                 }
-                else
-                {
-                    Core.user= user;
-                    Core.SelectProfile();
-                    mainWindow.LoadDate();
-                }
+                return;
+            }
+            else
+            {
+                Core.user = user;
+                Core.SelectProfile();
+                mainWindow.LoadDate();
+            }
         }
-private void submitCaptcha_Click(object sender, RoutedEventArgs e)
+        private void submitCaptcha_Click(object sender, RoutedEventArgs e)
         {
             if (captchaInput.Text != captcha.Text)
             {
                 MessageBox.Show("Неверно введена капча", "Ошибка");
                 CaptchaChange();
-
+                captchaInput.Clear();
             }
             else
             {
                 MessageBox.Show("Капча введена успешно, можете продолжить авторизацию", "Успех");
-                CaptchaSwitch();
+                CaptchaSwitch(false);
                 failedAttempts = 0;
+                captchaInput.Clear();
             }
         }
+
         private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (e.Command == ApplicationCommands.Copy ||
-            e.Command == ApplicationCommands.Cut ||
-            e.Command == ApplicationCommands.Paste)
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
             }
         }
+
         public void CaptchaChange()
-
         {
-            String allowchar = " ";
-            allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
-            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z";
-            allowchar += "1,2,3,4,5,6,7,8,9,0";
-            char[] a = { ',' };
-            String[] ar = allowchar.Split(a);
-            String pwd = "";
-            string temp = "";
+            string allowchar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12324567890";
+            string pwd = "";
             Random r = new Random();
-
             for (int i = 0; i < 6; i++)
             {
-                temp = ar[(r.Next(0, ar.Length))];
-                pwd += temp;
+                pwd += allowchar[r.Next(0, allowchar.Length)];
             }
             captcha.Text = pwd;
         }
-        public void CaptchaSwitch()
+        public void CaptchaSwitch(bool showCaptcha)
         {
-            switch (captcha.Visibility)
+            if (showCaptcha)
             {
-                case Visibility.Visible:
-                    TextBoxLogin.Clear();
-                    PasswordBox.Clear();
-                    MainFiels.Visibility = Visibility.Visible;
-                    return;
-                case Visibility.Hidden:
-                    CapchaPanel.Visibility = Visibility.Visible;
-                    MainFiels.Visibility = Visibility.Hidden;
-                    return;
+                CapchaPanel.Visibility = Visibility.Visible;
+                MainFiels.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CapchaPanel.Visibility = Visibility.Collapsed;
+                MainFiels.Visibility = Visibility.Visible;
             }
         }
-        private void ButtonChangePassword_Click(object sender, RoutedEventArgs e)
-        {
-           NavigationService?.Navigate(new ChangePassPage());
-        }
-
         private void ButtonReg_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new RegPage());
@@ -132,7 +122,6 @@ private void submitCaptcha_Click(object sender, RoutedEventArgs e)
         {
             TextBoxLogin.Focus();
         }
-
         private void txtHintPass_MouseLeftButtonUp(object sender,MouseButtonEventArgs e)
         {
             PasswordBox.Focus();
