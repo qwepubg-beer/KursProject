@@ -37,7 +37,7 @@
                 <DataGridTextColumn Header="Клечатка" Binding="{Binding FiberG}"/>
                 <DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}"/>
                 <DataGridTextColumn Header="Код" Binding="{Binding CategoryId}"/>
-                <DataGridTextColumn Header="Категория" Binding="{Binding FoodCategories.Name}"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding FoodCategories.Name}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
