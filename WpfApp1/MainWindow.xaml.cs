@@ -69,11 +69,13 @@ namespace WpfApp1
                 switch (Core.user.RoleId)
                 { 
                     case 1: User_menu.Visibility = Visibility.Visible;
+                        MainFrame.NavigationService.Navigate(new RecordsPage());
                         break;
                     case 2: 
                         break;
                     case 3:
                         Admin_menu.Visibility = Visibility.Visible;
+                        MainFrame.NavigationService.Navigate(new AdminListUser());
                         break;
                 }
             }
@@ -105,22 +107,26 @@ namespace WpfApp1
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            if(Core.user!=null)
+            var result = MessageBox.Show("Выйти из аккаунта?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                switch (Core.user.RoleId)
+                if (Core.user != null)
                 {
-                    case 1:
-                        User_menu.Visibility = Visibility.Collapsed;
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        Admin_menu.Visibility = Visibility.Collapsed;
-                        break;
+                    switch (Core.user.RoleId)
+                    {
+                        case 1:
+                            User_menu.Visibility = Visibility.Collapsed;
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            Admin_menu.Visibility = Visibility.Collapsed;
+                            break;
+                    }
+                    Core.Clear();
+                    IsLogOut = true;
+                    MainFrame.NavigationService.Navigate(new AuthPage());
                 }
-                Core.Clear();
-                IsLogOut = false;
-                MainFrame.NavigationService.Navigate(new AuthPage());
             }
         }
         private void Products_Click(object sender, RoutedEventArgs e)

@@ -27,7 +27,7 @@ namespace WpfApp1.Pages
         }
         void LoadData()
         {
-            FoodList = new ObservableCollection<Foods>(Core.kursEntities.Foods.ToList());
+            FoodList = new ObservableCollection<Foods>(Core.kursEntities.Foods.Where(a=>a.IsActive).ToList());
             ProductList.ItemsSource = FoodList;
             ChoosingProduct.Text = "Выбрано: ";
         }

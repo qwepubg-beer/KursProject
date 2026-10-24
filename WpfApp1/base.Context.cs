@@ -42,7 +42,6 @@ namespace WpfApp1
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<SleepLogs> SleepLogs { get; set; }
         public virtual DbSet<Styles> Styles { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TrainingPrograms> TrainingPrograms { get; set; }
         public virtual DbSet<UserProfiles> UserProfiles { get; set; }
         public virtual DbSet<Users> Users { get; set; }

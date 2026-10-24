@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Forms.DataVisualization.Charting;
 using WpfApp1.res;
 using static WpfApp1.Function;
-//using ExcelApp = Microsoft.Office.Interop.Excel;
+using ExcelApp = Microsoft.Office.Interop.Excel;
 using WordApp = Microsoft.Office.Interop.Word;
 
 namespace WpfApp1.Pages
@@ -254,7 +254,7 @@ namespace WpfApp1.Pages
             {
                 case 0: Diagram1Word(); break;
             }
-        }/*
+        }
         void Diagram1Excel()
         {
             var weeklyData = GetWeeklyData();
@@ -342,12 +342,12 @@ namespace WpfApp1.Pages
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-        }*/
+        }
         private void excelButton_Click(object sender, RoutedEventArgs e)
         {
             switch (TypeDiagram.SelectedIndex)
             {
-                // case 0: Diagram1Excel(); break;
+                case 0: Diagram1Excel(); break;
             }
         }
     }

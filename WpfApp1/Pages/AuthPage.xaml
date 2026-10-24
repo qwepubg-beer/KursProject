@@ -29,9 +29,9 @@ VerticalAlignment="Top">
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Логин" HorizontalAlignment="Center" Grid.Row="0"></Label>
+            <Label Content="Логин" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0"></Label>
             <TextBox x:Name="TextBoxLogin" Background="Transparent"  TextWrapping="Wrap" ToolTip="Введите логин или почту" Grid.Row="1" Margin="5"/>
-            <Label Content="Пароль" HorizontalAlignment="Center" Grid.Row="2"></Label>
+            <Label Content="Пароль" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Bottom"></Label>
             <PasswordBox x:Name="PasswordBox" Background="Transparent" ToolTip="Введите пароль" Grid.Row="3" Margin="5"/>
             <Button x:Name="ButtonEnter" Content="Вход" ToolTip="Кнопка входа" Grid.Row="4" Margin="5" Click="ButtonEnter_Click"/>
             <Button x:Name="ButtonReg"   Content="Регистрация" ToolTip="Кнопка регистрации" Grid.Row="5"  Margin="5" Click="ButtonReg_Click"/>
