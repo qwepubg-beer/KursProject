@@ -351,7 +351,7 @@
       <DependentUpon>base.edmx</DependentUpon>
       <LastGenOutput>base.cs</LastGenOutput>
     </Content>
-    <Content Include="db\script.sql" />
+    <Content Include="db\UP0101.sql" />
     <Resource Include="res\Icons\logout.ico" />
     <Resource Include="res\Icons\back.ico" />
     <Resource Include="res\Icons\acc.ico" />
